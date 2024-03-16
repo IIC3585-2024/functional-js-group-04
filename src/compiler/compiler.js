@@ -31,7 +31,11 @@ function compiler() {
 
     function write(out_path) {
         try {
-            writeFileSync(out_path, _output);
+            if (typeof _output !== 'string') {
+                writeFileSync(out_path, JSON.stringify(_output, null, 2));
+            } else {
+                writeFileSync(out_path, _output);
+            }    
         } catch (error) {
             console.error(`Error writing file to disk: ${error}`);
         }
