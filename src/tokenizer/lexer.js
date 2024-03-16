@@ -22,10 +22,10 @@ const heading = (src) => {
     return null;
 }
 
-const text = (src) => {
-    const match = src.match(regex.text);
+const textBlock = (src) => {
+    const match = src.match(regex.textBlock);
     if (match) {
-        const type = 'text';
+        const type = 'text_block';
         const raw = match[0];
         const text = match[1];
         return { raw, type, text };
@@ -33,4 +33,26 @@ const text = (src) => {
     return null;
 }
 
-export default { heading, text };
+const textInline = (src) => {
+    const match = src.match(regex.textInline);
+    if (match) {
+        const type = 'text_inline';
+        const raw = match[0];
+        const text = match[1];
+        return { raw, type, text };
+    }
+    return null;
+}
+
+const bold = (src) => {
+    const match = src.match(regex.bold);
+    if (match) {
+        const type = 'bold';
+        const raw = match[0];
+        const text = match[1];
+        return { raw, type, text };
+    }
+    return null;
+}
+
+export default { heading, textBlock, textInline, bold };

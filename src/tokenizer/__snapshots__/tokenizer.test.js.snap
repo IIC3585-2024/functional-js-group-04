@@ -1,0 +1,185 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tokenize headers h1 ... h6 1`] = `
+[
+  {
+    "children": [
+      {
+        "raw": "foo",
+        "text": "foo",
+        "type": "text_inline",
+      },
+    ],
+    "level": 1,
+    "raw": "# foo
+",
+    "text": "foo",
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "raw": "foo",
+        "text": "foo",
+        "type": "text_inline",
+      },
+    ],
+    "level": 2,
+    "raw": " ## foo
+",
+    "text": "foo",
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "raw": "foo",
+        "text": "foo",
+        "type": "text_inline",
+      },
+    ],
+    "level": 3,
+    "raw": " ### foo
+",
+    "text": "foo",
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "raw": "foo",
+        "text": "foo",
+        "type": "text_inline",
+      },
+    ],
+    "level": 4,
+    "raw": " #### foo
+",
+    "text": "foo",
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "raw": "foo",
+        "text": "foo",
+        "type": "text_inline",
+      },
+    ],
+    "level": 5,
+    "raw": " ##### foo
+",
+    "text": "foo",
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "raw": "foo",
+        "text": "foo",
+        "type": "text_inline",
+      },
+    ],
+    "level": 6,
+    "raw": " ###### foo
+",
+    "text": "foo",
+    "type": "heading",
+  },
+]
+`;
+
+exports[`tokenize headers with inline text decoration 1`] = `
+[
+  {
+    "children": [
+      {
+        "raw": "foo ",
+        "text": "foo ",
+        "type": "text_inline",
+      },
+      {
+        "raw": "**bar**",
+        "text": "bar",
+        "type": "bold",
+      },
+      {
+        "raw": " baz",
+        "text": " baz",
+        "type": "text_inline",
+      },
+    ],
+    "level": 1,
+    "raw": "# foo **bar** baz",
+    "text": "foo **bar** baz",
+    "type": "heading",
+  },
+]
+`;
+
+exports[`tokenizer get the appropriate tokens 1`] = `
+[
+  {
+    "children": [
+      {
+        "raw": "Foo",
+        "text": "Foo",
+        "type": "text_inline",
+      },
+    ],
+    "level": 2,
+    "raw": "## Foo
+",
+    "text": "Foo",
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "raw": "foo",
+        "text": "foo",
+        "type": "text_inline",
+      },
+    ],
+    "raw": "foo
+",
+    "text": "foo",
+    "type": "text_block",
+  },
+  {
+    "children": [
+      {
+        "raw": "**foo**",
+        "text": "foo",
+        "type": "bold",
+      },
+    ],
+    "raw": "**foo**
+",
+    "text": "**foo**",
+    "type": "text_block",
+  },
+  {
+    "children": [
+      {
+        "raw": "foo ",
+        "text": "foo ",
+        "type": "text_inline",
+      },
+      {
+        "raw": "**bar**",
+        "text": "bar",
+        "type": "bold",
+      },
+      {
+        "raw": " baz",
+        "text": " baz",
+        "type": "text_inline",
+      },
+    ],
+    "raw": "foo **bar** baz",
+    "text": "foo **bar** baz",
+    "type": "text_block",
+  },
+]
+`;
