@@ -48,6 +48,12 @@ const tokenizeInline = (src) => {
             continue
         }
 
+        if (token = lexer.italic(src)) {
+            src = src.substring(token.raw.length);
+            tokens.push(token);
+            continue
+        }
+
         // Throws error if the src is not empty and no token is matched
         if (src) {
             throw new Error('Infinite loop', src);

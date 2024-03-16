@@ -14,10 +14,6 @@ const parse = (tokens) => {
         return '</body></html>';
     }
 
-    function heading (token, closing = false) {
-        return `<h${token.level}>${token.text}</h${token.level}>\n`
-    }
-
     function tag(type, closing = false) {
         return `<${closing ? '/' : ''}${type}>`
     }
@@ -41,6 +37,10 @@ const parse = (tokens) => {
     
             if (token.type === "bold") {
                 out += `<strong>${token.text}</strong>`
+            }
+
+            if (token.type === "italic") {
+                out += `<em>${token.text}</em>`
             }
     
         });

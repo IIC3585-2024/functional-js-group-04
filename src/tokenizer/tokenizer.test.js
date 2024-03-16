@@ -22,15 +22,7 @@ describe('tokenize headers', () => {
 })
 
 test('tokenizer with inline content', () => {
-    const src = `foo **bar** baz`
-    const tokens = tokenize(src)
-    expect(tokens).toEqual([
-        {
-            raw: 'foo **bar** baz', type: 'text_block', text: 'foo **bar** baz', children: [
-                { raw: 'foo ', type: 'text_inline', text: 'foo ' },
-                { raw: '**bar**', type: 'bold', text: 'bar' },
-                { raw: ' baz', type: 'text_inline', text: ' baz' }
-            ]
-        }
-    ]);
+    const src = `foo **bar** baz *qux*`;
+    const tokens = tokenize(src);
+    expect(tokens).toMatchSnapshot();
 })

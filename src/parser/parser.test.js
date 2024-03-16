@@ -39,37 +39,37 @@ describe("parser", () => {
     expect(parse(tokens)).toMatchSnapshot();
   });
 
-  describe("should support text blocks with inline content", () => {
-    test("text only", () => {
+  test("should support text blocks with inline content", () => {
       const tokens = [
         {
-          type: "text_block",
-          raw: "foo\n",
-          text: "foo",
-          children: [{ type: "text_inline", raw: "foo", text: "foo" }],
-        },
-      ];
-
-      const out = `${prefix}<p>foo</p>\n${suffix}`;
-      expect(parse(tokens)).toEqual(out);
-    });
-
-    test("text and inline bold", () => {
-      const tokens = [
-        {
-          type: "text_block",
-          raw: "foo **bar** baz",
-          text: "foo **bar** baz",
-          children: [
-            { type: "text_inline", raw: "foo ", text: "foo " },
-            { type: "bold", raw: "**bar**", text: "bar" },
-            { type: "text_inline", raw: " baz", text: " baz" },
+          "children": [
+            {
+              "raw": "foo ",
+              "text": "foo ",
+              "type": "text_inline",
+            },
+            {
+              "raw": "**bar**",
+              "text": "bar",
+              "type": "bold",
+            },
+            {
+              "raw": " baz ",
+              "text": " baz ",
+              "type": "text_inline",
+            },
+            {
+              "raw": "*qux*",
+              "text": "qux",
+              "type": "italic",
+            },
           ],
+          "raw": "foo **bar** baz *qux*",
+          "text": "foo **bar** baz *qux*",
+          "type": "text_block",
         },
       ];
 
-      const out = `${prefix}<p>foo <strong>bar</strong> baz</p>\n${suffix}`;
-      expect(parse(tokens)).toEqual(out);
-    });
+    expect(parse(tokens)).toMatchSnapshot();
   });
 });

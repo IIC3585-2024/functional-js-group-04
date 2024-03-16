@@ -55,4 +55,15 @@ const bold = (src) => {
     return null;
 }
 
-export default { heading, textBlock, textInline, bold };
+const italic = (src) => {
+    const match = src.match(regex.italic);
+    if (match) {
+        const type = 'italic';
+        const raw = match[0];
+        const text = match[1];
+        return { raw, type, text };
+    }
+    return null;
+}
+
+export default { heading, textBlock, textInline, bold, italic };

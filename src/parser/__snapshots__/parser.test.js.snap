@@ -1,3 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`parser should support heading tokens 1`] = `"<!DOCTYPE html><html><head><title>Markdown</title></head><body><h1>foo <strong>bar</strong> baz</h1></body></html>"`;
+
+exports[`parser should support text blocks with inline content 1`] = `
+"<!DOCTYPE html><html><head><title>Markdown</title></head><body><p>foo <strong>bar</strong> baz <em>qux</em></p>
+</body></html>"
+`;

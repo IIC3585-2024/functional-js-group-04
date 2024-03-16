@@ -83,3 +83,11 @@ describe('#bold', () => {
         expect(token).toEqual({ raw: "**foo**", type: 'bold', text: 'foo' });
     });
 });
+
+describe('#italic', () => {
+    test('should return italic token', () => {
+        const src = '*foo*';
+        const token = lexer.italic(src);
+        expect(token).toEqual({ raw: "*foo*", type: 'italic', text: 'foo' });
+    });
+})

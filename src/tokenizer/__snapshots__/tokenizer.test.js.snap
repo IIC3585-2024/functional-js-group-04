@@ -183,3 +183,35 @@ exports[`tokenizer get the appropriate tokens 1`] = `
   },
 ]
 `;
+
+exports[`tokenizer with inline content 1`] = `
+[
+  {
+    "children": [
+      {
+        "raw": "foo ",
+        "text": "foo ",
+        "type": "text_inline",
+      },
+      {
+        "raw": "**bar**",
+        "text": "bar",
+        "type": "bold",
+      },
+      {
+        "raw": " baz ",
+        "text": " baz ",
+        "type": "text_inline",
+      },
+      {
+        "raw": "*qux*",
+        "text": "qux",
+        "type": "italic",
+      },
+    ],
+    "raw": "foo **bar** baz *qux*",
+    "text": "foo **bar** baz *qux*",
+    "type": "text_block",
+  },
+]
+`;

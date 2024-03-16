@@ -5,6 +5,7 @@ const regex = {
     textBlock: /^(.+)(?:\n+|$)/,
     textInline: /^([\w\s]+)[\n+|$]?/,
     bold: /^\*\*(.*?)\*\*/,
+    italic: /^\*(.*?)\*/,
 }
 
 export default regex;
