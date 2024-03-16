@@ -1,5 +1,6 @@
 const parser = (tokens) => {
     let out = '';
+    out += prefix();
 
     tokens.map((token) => {
         if (token.type === "heading") {
@@ -9,6 +10,16 @@ const parser = (tokens) => {
             out += text(token);
         }
     });
+
+    out += suffix();
+
+    function prefix() {
+        return '<!DOCTYPE html><html><head><title>Markdown</title></head><body>';
+    }
+
+    function suffix() {
+        return '</body></html>';
+    }
 
     function heading (token) {
         return `<h${token.level}>${token.text}</h${token.level}>\n`

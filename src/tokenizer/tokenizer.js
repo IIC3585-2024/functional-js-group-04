@@ -1,4 +1,4 @@
-import lexer from './lexer';
+import lexer from './lexer.js';
 
 const lex = (src) => {
     const tokens = [];

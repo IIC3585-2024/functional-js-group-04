@@ -1,4 +1,4 @@
-import regex from "./regex";
+import regex from "./regex.js";
 
 /**
  * Extracts the heading information from the given source string.
