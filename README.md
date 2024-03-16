@@ -36,7 +36,7 @@ Transpile the markdown to html to the output path `./README.html`.
 
 - [x] Support raw text `foo` &rarr; `<p>foo</p>`
 - [x] Support headings  `# foo` &rarr; `<h1>foo</h1>`
-- [ ] Support for decorations
+- [x] Support for decorations
   - [x] Bold inline `foo **bar** baz` &rarr; `<p>foo <strong>bar</strong> baz</p>`
   - [x] Italic inline `foo *bar* baz` &rarr; `<p>foo <em>bar</em> baz</p>`
-  - [ ] Bold and italic
+  - [x] Bold and italic

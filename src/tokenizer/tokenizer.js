@@ -44,12 +44,14 @@ const tokenizeInline = (src) => {
 
         if (token = lexer.bold(src)) {
             src = src.substring(token.raw.length);
+            token.children = tokenizeInline(token.text);
             tokens.push(token);
             continue
         }
 
         if (token = lexer.italic(src)) {
             src = src.substring(token.raw.length);
+            token.children = tokenizeInline(token.text);
             tokens.push(token);
             continue
         }

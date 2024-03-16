@@ -36,11 +36,15 @@ const parse = (tokens) => {
             }
     
             if (token.type === "bold") {
-                out += `<strong>${token.text}</strong>`
+                out += tag("strong");
+                _recursive_parse(token.children);
+                out += tag("strong", true);
             }
 
             if (token.type === "italic") {
-                out += `<em>${token.text}</em>`
+                out += tag("em");
+                _recursive_parse(token.children);
+                out += tag("em", true);
             }
     
         });

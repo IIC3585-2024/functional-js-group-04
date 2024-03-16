@@ -99,6 +99,13 @@ exports[`tokenize headers with inline text decoration 1`] = `
         "type": "text_inline",
       },
       {
+        "children": [
+          {
+            "raw": "bar",
+            "text": "bar",
+            "type": "text_inline",
+          },
+        ],
         "raw": "**bar**",
         "text": "bar",
         "type": "bold",
@@ -149,6 +156,13 @@ exports[`tokenizer get the appropriate tokens 1`] = `
   {
     "children": [
       {
+        "children": [
+          {
+            "raw": "foo",
+            "text": "foo",
+            "type": "text_inline",
+          },
+        ],
         "raw": "**foo**",
         "text": "foo",
         "type": "bold",
@@ -167,6 +181,13 @@ exports[`tokenizer get the appropriate tokens 1`] = `
         "type": "text_inline",
       },
       {
+        "children": [
+          {
+            "raw": "bar",
+            "text": "bar",
+            "type": "text_inline",
+          },
+        ],
         "raw": "**bar**",
         "text": "bar",
         "type": "bold",
@@ -194,23 +215,61 @@ exports[`tokenizer with inline content 1`] = `
         "type": "text_inline",
       },
       {
-        "raw": "**bar**",
+        "children": [
+          {
+            "raw": "bar",
+            "text": "bar",
+            "type": "text_inline",
+          },
+        ],
+        "raw": "*bar*",
         "text": "bar",
-        "type": "bold",
+        "type": "italic",
       },
       {
-        "raw": " baz ",
-        "text": " baz ",
+        "raw": " ",
+        "text": " ",
         "type": "text_inline",
       },
       {
-        "raw": "*qux*",
-        "text": "qux",
-        "type": "italic",
+        "children": [
+          {
+            "raw": "baz",
+            "text": "baz",
+            "type": "text_inline",
+          },
+        ],
+        "raw": "**baz**",
+        "text": "baz",
+        "type": "bold",
+      },
+      {
+        "raw": " ",
+        "text": " ",
+        "type": "text_inline",
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "raw": "qux",
+                "text": "qux",
+                "type": "text_inline",
+              },
+            ],
+            "raw": "*qux*",
+            "text": "qux",
+            "type": "italic",
+          },
+        ],
+        "raw": "***qux***",
+        "text": "*qux*",
+        "type": "bold",
       },
     ],
-    "raw": "foo **bar** baz *qux*",
-    "text": "foo **bar** baz *qux*",
+    "raw": "foo *bar* **baz** ***qux***",
+    "text": "foo *bar* **baz** ***qux***",
     "type": "text_block",
   },
 ]

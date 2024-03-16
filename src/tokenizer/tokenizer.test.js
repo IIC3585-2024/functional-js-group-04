@@ -22,7 +22,7 @@ describe('tokenize headers', () => {
 })
 
 test('tokenizer with inline content', () => {
-    const src = `foo **bar** baz *qux*`;
+    const src = `foo *bar* **baz** ***qux***`;
     const tokens = tokenize(src);
     expect(tokens).toMatchSnapshot();
 })
