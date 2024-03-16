@@ -1,0 +1,7 @@
+{
+  "name": "md-parser",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "domingo2000 <dedwards@buk.cl>",
+  "license": "MIT"
+}
