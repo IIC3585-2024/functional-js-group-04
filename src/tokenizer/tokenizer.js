@@ -1,4 +1,4 @@
-import rules from './rules';
+import lexer from './lexer';
 
 const lex = (src) => {
     const tokens = [];
@@ -6,12 +6,12 @@ const lex = (src) => {
     while (src) {
         let token = null;
 
-        if (token = rules.heading(src)) {
+        if (token = lexer.heading(src)) {
             src = src.substring(token.raw.length);
             tokens.push(token);
             continue
         }
-        if (token = rules.text(src)) {
+        if (token = lexer.text(src)) {
             src = src.substring(token.raw.length);
             tokens.push(token);
             continue

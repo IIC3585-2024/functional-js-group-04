@@ -1,10 +1,4 @@
-
-
-const regex = {
-    heading: /^ {0,3}(#{1,6})(?:\s|$)(.*)(?:\n+|$)/,
-    text: /^(.+)(?:\n+|$)/,
-}
-
+import regex from "./regex";
 
 /**
  * Extracts the heading information from the given source string.
@@ -39,8 +33,4 @@ const text = (src) => {
     return null;
 }
 
-export default {
-    heading,
-    text,
-};
-    
+export default { heading, text };
