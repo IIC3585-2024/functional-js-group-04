@@ -1,6 +1,6 @@
 import lexer from './lexer.js';
 
-const lex = (src) => {
+const tokenize = (src) => {
     const tokens = [];
 
     while (src) {
@@ -24,10 +24,6 @@ const lex = (src) => {
     }
 
     return tokens;
-}
+};
 
-const tokenizer = {
-    lex
-}
-
-export default tokenizer;
+export default tokenize;

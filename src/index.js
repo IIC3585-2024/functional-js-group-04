@@ -1,6 +1,6 @@
 import { readFile, writeFile } from 'fs';
-import tokenizer from './tokenizer/tokenizer.js';
-import parser from './parser/parser.js';
+import tokenize from './tokenizer/tokenizer.js';
+import parse from './parser/parser.js';
 
 
 let [,, input_path, output_path] = process.argv;
@@ -19,9 +19,8 @@ readFile(input_path, 'utf8', (err, data) => {
         console.error(`Error reading file from disk: ${err}`);
     } else {
         const src = data;
-        const tokens = tokenizer.lex(src);
-
-        const html = parser(tokens);
+        const tokens = tokenize(src);
+        const html = parse(tokens);
         const out = html;
 
         writeFile(output_path, out, err => {

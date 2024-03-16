@@ -1,4 +1,4 @@
-const parser = (tokens) => {
+const parse = (tokens) => {
     let out = '';
     out += prefix();
 
@@ -32,4 +32,4 @@ const parser = (tokens) => {
     return out;
 }
 
-export default parser;
+export default parse;
