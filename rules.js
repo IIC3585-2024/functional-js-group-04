@@ -1,5 +1,10 @@
 
-const _heading = /(#{1,6}) (.*)/;
+
+const regex = {
+    heading: /^ {0,3}(#{1,6})(?:\s|$)(.*)(?:\n+|$)/,
+    text: /^(.+)(?:\n+|$)/,
+}
+
 
 /**
  * Extracts the heading information from the given source string.
@@ -12,18 +17,30 @@ const _heading = /(#{1,6}) (.*)/;
  * @property {string} text - The text content of the heading.
  */
 const heading = (src) => {
-    const match = src.match(_heading);
+    const match = src.match(regex.heading);
     if (match) {
         const type = 'heading';
+        const raw = match[0];
         const level = match[1].length;
         const text = match[2]
-        const raw = match[0];
         return { raw, type, level, text };
+    }
+    return null;
+}
+
+const text = (src) => {
+    const match = src.match(regex.text);
+    if (match) {
+        const type = 'text';
+        const raw = match[0];
+        const text = match[1];
+        return { raw, type, text };
     }
     return null;
 }
 
 export default {
     heading,
+    text,
 };
     
