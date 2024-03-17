@@ -1,13 +1,71 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`parser should support heading tokens 1`] = `"<!DOCTYPE html><html><head><title>Markdown</title></head><body><h1>foo <strong>bar</strong> baz</h1></body></html>"`;
-
-exports[`parser should support other common characters 1`] = `
-"<!DOCTYPE html><html><head><title>Markdown</title></head><body><p>foo! bar? baz. qux</p>
-</body></html>"
+exports[`parser spec with blockquote 1`] = `
+"<!DOCTYPE html>
+        <style>
+            blockquote {
+                margin: 1.5em 40px;
+                padding: 0 1em;
+                border-left: 5px solid #ddd;
+                background-color: #f9f9f9;
+                padding: 0.5em 10px;
+              }
+        </style>
+        <html><head><title>Markdown</title></head><body><blockquote><p>foo</p></blockquote></body></html>"
 `;
 
-exports[`parser should support text blocks with inline content 1`] = `
-"<!DOCTYPE html><html><head><title>Markdown</title></head><body><p>foo <em>bar</em> <strong>baz</strong> <strong><em>qux</em></strong></p>
-</body></html>"
+exports[`parser spec with heading tokens 1`] = `
+"<!DOCTYPE html>
+        <style>
+            blockquote {
+                margin: 1.5em 40px;
+                padding: 0 1em;
+                border-left: 5px solid #ddd;
+                background-color: #f9f9f9;
+                padding: 0.5em 10px;
+              }
+        </style>
+        <html><head><title>Markdown</title></head><body><h1>foo <strong>bar</strong> baz</h1></body></html>"
+`;
+
+exports[`parser spec with other common characters 1`] = `
+"<!DOCTYPE html>
+        <style>
+            blockquote {
+                margin: 1.5em 40px;
+                padding: 0 1em;
+                border-left: 5px solid #ddd;
+                background-color: #f9f9f9;
+                padding: 0.5em 10px;
+              }
+        </style>
+        <html><head><title>Markdown</title></head><body><p>foo! bar? baz. qux</p></body></html>"
+`;
+
+exports[`parser spec with text blocks with inline content 1`] = `
+"<!DOCTYPE html>
+        <style>
+            blockquote {
+                margin: 1.5em 40px;
+                padding: 0 1em;
+                border-left: 5px solid #ddd;
+                background-color: #f9f9f9;
+                padding: 0.5em 10px;
+              }
+        </style>
+        <html><head><title>Markdown</title></head><body><p>foo <em>bar</em> <strong>baz</strong> <strong><em>qux</em></strong></p></body></html>"
+`;
+
+exports[`parser spec with thematic break 1`] = `
+"<!DOCTYPE html>
+        <style>
+            blockquote {
+                margin: 1.5em 40px;
+                padding: 0 1em;
+                border-left: 5px solid #ddd;
+                background-color: #f9f9f9;
+                padding: 0.5em 10px;
+              }
+        </style>
+        <html><head><title>Markdown</title></head><body><hr/><hr/><hr/></body></html>"
 `;

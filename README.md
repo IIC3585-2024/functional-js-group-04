@@ -40,3 +40,5 @@ Transpile the markdown to html to the output path `./README.html`.
   - [x] Bold inline `foo **bar** baz` &rarr; `<p>foo <strong>bar</strong> baz</p>`
   - [x] Italic inline `foo *bar* baz` &rarr; `<p>foo <em>bar</em> baz</p>`
   - [x] Bold and italic
+- [ ] Support for [leaf blocks](https://spec.commonmark.org/0.31.2/#leaf-blocks)
+  - [x] Thematic breaks

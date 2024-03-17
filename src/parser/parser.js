@@ -6,8 +6,22 @@ const parse = (tokens) => {
 
     out += suffix();
 
+    function style() {
+        return `
+        <style>
+            blockquote {
+                margin: 1.5em 40px;
+                padding: 0 1em;
+                border-left: 5px solid #ddd;
+                background-color: #f9f9f9;
+                padding: 0.5em 10px;
+              }
+        </style>
+        `
+    }
+
     function prefix() {
-        return '<!DOCTYPE html><html><head><title>Markdown</title></head><body>';
+        return `<!DOCTYPE html>${style()}<html><head><title>Markdown</title></head><body>`;
     }
 
     function suffix() {
@@ -20,6 +34,11 @@ const parse = (tokens) => {
 
     function _recursive_parse(tokens) {
         tokens.map((token) => {
+
+            if (token.type === "thematic_break") {
+                out += '<hr/>';
+            }
+
             if (token.type === "heading") {
                 out += tag("h1");
                 _recursive_parse(token.children);
@@ -28,7 +47,7 @@ const parse = (tokens) => {
             if (token.type === "text_block") {
                 out += '<p>';
                 _recursive_parse(token.children);
-                out += '</p>\n';
+                out += '</p>';
             }
     
             if (token.type === "text_inline") {
@@ -45,6 +64,12 @@ const parse = (tokens) => {
                 out += tag("em");
                 _recursive_parse(token.children);
                 out += tag("em", true);
+            }
+
+            if (token.type === "blockquote") {
+                out += tag("blockquote");
+                _recursive_parse(token.children);
+                out += tag("blockquote", true);
             }
     
         });

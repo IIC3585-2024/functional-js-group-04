@@ -1,5 +1,30 @@
 import lexer from './lexer';
 
+describe("#thematicBreak", () => {
+    test('***', () => {
+        const src = '***\nbar';
+        const token = lexer.thematicBreak(src);
+        expect(token).toEqual({ raw: "***\n", type: 'thematic_break' });
+    });
+
+    test('---', () => {
+        const src = '---\nbar';
+        const token = lexer.thematicBreak(src);
+        expect(token).toEqual({ raw: "---\n", type: 'thematic_break' });
+    });
+
+    test('___', () => {
+        const src = '___\nbar';
+        const token = lexer.thematicBreak(src);
+        expect(token).toEqual({ raw: "___\n", type: 'thematic_break' });
+    });
+
+    test('should work as defined in the spec', () => {
+        const src = '   *     *          *\nbar';
+        const token = lexer.thematicBreak(src);
+        expect(token).toEqual({ raw: "   *     *          *\n", type: 'thematic_break' });
+    });
+});
 
 describe('#heading', () => {
     test('should return null on empty string', () => {
@@ -43,6 +68,12 @@ describe('#textBlock', () => {
         const token = lexer.textBlock(src);
         expect(token).toEqual({ raw: "how are you\n", type: 'text_block', text: 'how are you' });
     });
+
+    test('should not match blockquote', () => {
+        const src = '> foo\nbar';
+        const token = lexer.textBlock(src);
+        expect(token).toEqual(null);
+    });
 });
 
 describe('#textInline', () => {
@@ -62,7 +93,6 @@ describe('#textInline', () => {
         expect(token).toEqual({ raw: "bar ", type: 'text_inline', text: 'bar ' });
     });
 })
-
 
 describe('#bold', () => {
     test('should return null on empty string', () => {
@@ -89,5 +119,22 @@ describe('#italic', () => {
         const src = '*foo*';
         const token = lexer.italic(src);
         expect(token).toEqual({ raw: "*foo*", type: 'italic', text: 'foo' });
+    });
+})
+
+describe('#blockquote', () => {
+    test('should return blockquote token', () => {
+        const src = '> foo\n>bar\n>baz';
+        const token = lexer.blockquote(src);
+        expect(token).toEqual(
+            {
+                raw: "> foo\n",
+                type: 'blockquote',
+                text: 'foo',
+                children: [
+                    { raw: "foo\n", type: 'text_block', text: 'foo' },
+                ]
+            }
+        );
     });
 })

@@ -1,5 +1,89 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`blockquote should return a blockquote object 1`] = `
+[
+  {
+    "children": [
+      {
+        "children": [
+          {
+            "raw": "foo",
+            "text": "foo",
+            "type": "text_inline",
+          },
+        ],
+        "raw": "foo",
+        "text": "foo",
+        "type": "text_block",
+      },
+    ],
+    "raw": "> foo
+",
+    "text": "foo",
+    "type": "blockquote",
+  },
+  {
+    "children": [
+      {
+        "children": [
+          {
+            "raw": "bar",
+            "text": "bar",
+            "type": "text_inline",
+          },
+        ],
+        "raw": "bar",
+        "text": "bar",
+        "type": "text_block",
+      },
+    ],
+    "raw": "> bar
+",
+    "text": "bar",
+    "type": "blockquote",
+  },
+  {
+    "children": [
+      {
+        "children": [
+          {
+            "raw": "baz",
+            "text": "baz",
+            "type": "text_inline",
+          },
+        ],
+        "raw": "baz",
+        "text": "baz",
+        "type": "text_block",
+      },
+    ],
+    "raw": "> baz",
+    "text": "baz",
+    "type": "blockquote",
+  },
+]
+`;
+
+exports[`thematic break should return the thematic_break token 1`] = `
+[
+  {
+    "raw": "***
+",
+    "type": "thematic_break",
+  },
+  {
+    "raw": "---
+",
+    "type": "thematic_break",
+  },
+  {
+    "raw": "___
+",
+    "type": "thematic_break",
+  },
+]
+`;
+
 exports[`tokenize headers h1 ... h6 1`] = `
 [
   {

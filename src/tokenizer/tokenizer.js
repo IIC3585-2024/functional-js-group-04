@@ -6,6 +6,12 @@ const tokenizeBlocks = (src) => {
     while (src) {
         let token = null;
 
+        if (token = lexer.thematicBreak(src)) {
+            src = src.substring(token.raw.length);
+            tokens.push(token);
+            continue
+        }
+
         if (token = lexer.heading(src)) {
             src = src.substring(token.raw.length);
             tokens.push(token);
@@ -18,6 +24,14 @@ const tokenizeBlocks = (src) => {
             tokens.push(token);
 
             token.children = tokenizeInline(token.text);
+            continue
+        }
+
+        if (token = lexer.blockquote(src)) {
+            src = src.substring(token.raw.length);
+            tokens.push(token);
+
+            token.children = tokenizeBlocks(token.text);
             continue
         }
 

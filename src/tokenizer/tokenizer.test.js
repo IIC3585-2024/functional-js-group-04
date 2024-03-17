@@ -1,6 +1,18 @@
 import tokenize from "./tokenizer"
 
+test('tokenizer should be a function', () => {
+    expect(typeof tokenize).toBe('function');
+});
 
+describe("thematic break", () => {
+    test('should return the thematic_break token', () => {
+        const src = '***\n---\n___\n';
+        const tokens = tokenize(src);
+        expect(tokens).toMatchSnapshot();
+    });
+});
+
+    
 test('tokenizer get the appropriate tokens', () => {
     const src = `## Foo\nfoo\n**foo**\nfoo **bar** baz`
     const tokens = tokenize(src)
@@ -25,4 +37,12 @@ test('tokenizer with inline content', () => {
     const src = `foo *bar* **baz** ***qux***`;
     const tokens = tokenize(src);
     expect(tokens).toMatchSnapshot();
+})
+
+describe('blockquote', () => {
+    test('should return a blockquote object', () => {
+        const src = `> foo\n> bar\n> baz`;
+        const tokens = tokenize(src);
+        expect(tokens).toMatchSnapshot();
+    });
 })

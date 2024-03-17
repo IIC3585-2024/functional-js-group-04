@@ -1,5 +1,15 @@
 import regex from "./regex.js";
 
+const thematicBreak = (src) => {
+    const match = src.match(regex.thematicBreak);
+    if (match) {
+        const type = 'thematic_break';
+        const raw = match[0];
+        return { raw, type };
+    }
+    return null;
+}
+
 /**
  * Extracts the heading information from the given source string.
  *
@@ -23,6 +33,9 @@ const heading = (src) => {
 }
 
 const textBlock = (src) => {
+    const reserved = ['>', '#'];
+    if (reserved.includes(src[0])) return null;
+
     const match = src.match(regex.textBlock);
     if (match) {
         const type = 'text_block';
@@ -66,4 +79,24 @@ const italic = (src) => {
     return null;
 }
 
-export default { heading, textBlock, textInline, bold, italic };
+const blockquote = (src) => {
+    const match = src.match(regex.blockquote);
+    if (match) {
+        const type = 'blockquote';
+        const raw = match[0];
+        const text = match[1];
+        return { raw, type, text, children : [textBlock(text + '\n')]};
+    }
+    return null;
+
+}
+
+export default {
+    thematicBreak,
+    heading,
+    textBlock,
+    textInline,
+    bold,
+    italic,
+    blockquote,
+};

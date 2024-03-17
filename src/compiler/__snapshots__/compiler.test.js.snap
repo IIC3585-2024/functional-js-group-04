@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#compiler .compile().setSource().output() returns a string 1`] = `
+"<!DOCTYPE html>
+        <style>
+            blockquote {
+                margin: 1.5em 40px;
+                padding: 0 1em;
+                border-left: 5px solid #ddd;
+                background-color: #f9f9f9;
+                padding: 0.5em 10px;
+              }
+        </style>
+        <html><head><title>Markdown</title></head><body><h1>Hello World</h1></body></html>"
+`;
+
+exports[`#compiler complete chain of methods 1`] = `
+"<!DOCTYPE html>
+        <style>
+            blockquote {
+                margin: 1.5em 40px;
+                padding: 0 1em;
+                border-left: 5px solid #ddd;
+                background-color: #f9f9f9;
+                padding: 0.5em 10px;
+              }
+        </style>
+        <html><head><title>Markdown</title></head><body><h1>Hello World</h1></body></html>"
+`;
