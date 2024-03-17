@@ -39,7 +39,28 @@ Transpile the markdown to html to the output path `./README.html`.
   - [x] Bold inline `foo **bar** baz` &rarr; `<p>foo <strong>bar</strong> baz</p>`
   - [x] Italic inline `foo *bar* baz` &rarr; `<p>foo <em>bar</em> baz</p>`
   - [x] Bold and italic
-- [ ] Support for [leaf blocks](https://spec.commonmark.org/0.31.2/#leaf-blocks)
-  - [x] Thematic breaks
-  - [ ] Support headings
-    - [x] ATX Headings `# foo` &rarr; `<h1>foo</h1>`
+- [ ] Support for [common mark spec](https://spec.commonmark.org/0.31.2)
+  - [ ] [Leaf blocks](https://spec.commonmark.org/0.31.2/#leaf-blocks)
+    - [x] [Thematic breaks](https://spec.commonmark.org/0.31.2/#thematic-breaks)
+    - [x] [ATX Headings](https://spec.commonmark.org/0.31.2/#atx-headings) `# foo` &rarr; `<h1>foo</h1>`
+    - [x] [Setext Headings](https://spec.commonmark.org/0.31.2/#setext-heading) `foo\n===` &rarr; `<h1>foo</h1>`
+    - [ ] [Indented code blocks](https://spec.commonmark.org/0.31.2/#indented-code-blocks)
+    - [ ] [Fenced code blocks](https://spec.commonmark.org/0.31.2/#fenced-code-blocks)
+    - [ ] [HTML blocks](https://spec.commonmark.org/0.31.2/#html-blocks)
+    - [ ] [Link reference definitions](https://spec.commonmark.org/0.31.2/#link-reference-definitions)
+    - [ ] [Paragraphs](https://spec.commonmark.org/0.31.2/#paragraphs)
+    - [ ] [Blank lines](https://spec.commonmark.org/0.31.2/#blank-lines)
+  - [ ] [Container blocks](https://spec.commonmark.org/0.31.2/#container-blocks)
+    - [ ] [Block Quotes](https://spec.commonmark.org/0.31.2/#block-quotes)
+    - [ ] [List items](https://spec.commonmark.org/0.31.2/#list-items)
+    - [ ] [Lists](https://spec.commonmark.org/0.31.2/#lists)
+  - [ ] [Inlines](https://spec.commonmark.org/0.31.2/#inlines)
+    - [ ] [Code spans](https://spec.commonmark.org/0.31.2/#code-spans)
+    - [ ] [Emphasis and strong emphasis](https://spec.commonmark.org/0.31.2/#emphasis-and-strong-emphasis)
+    - [ ] [Links](https://spec.commonmark.org/0.31.2/#links)
+    - [ ] [Images](https://spec.commonmark.org/0.31.2/#images)
+    - [ ] [Autolinks](https://spec.commonmark.org/0.31.2/#autolinks)
+    - [ ] [Raw HTML](https://spec.commonmark.org/0.31.2/#raw-html)
+    - [ ] [Hard line breaks](https://spec.commonmark.org/0.31.2/#hard-line-breaks)
+    - [ ] [Soft line breaks](https://spec.commonmark.org/0.31.2/#soft-line-breaks)
+    - [ ] [Textual content](https://spec.commonmark.org/0.31.2/#textual-content)
