@@ -52,6 +52,32 @@ describe('#headings', () => {
             expect(token).toEqual({ raw: "## foo ##", type: 'heading', level: 2, text: 'foo' });
         });
     });
+
+    describe('setext heading', () => {
+        test('not match with blank lines between text and heading underline', () => {
+            const src = 'foo\n\n---\n';
+            const token = lexer.heading(src);
+            expect(token).toBe(null);
+        });
+
+        test('first level heading', () => {
+            const src = 'foo\n===\n';
+            const token = lexer.heading(src);
+            expect(token).toEqual({ raw: "foo\n===\n", type: 'heading', level: 1, text: 'foo' });
+        });
+
+        test('second level heading', () => {
+            const src = 'foo\n---\n';
+            const token = lexer.heading(src);
+            expect(token).toEqual({ raw: "foo\n---\n", type: 'heading', level: 2, text: 'foo' });
+        });
+
+        test('multiline heading', () => {
+            const src = 'foo\nbar\n---\nbaz';
+            const token = lexer.heading(src);
+            expect(token).toEqual({ raw: "foo\nbar\n---\n", type: 'heading', level: 2, text: 'foo\nbar' });
+        });
+    });
 });
 
 describe('#textBlock', () => {

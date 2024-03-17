@@ -29,6 +29,16 @@ const heading = (src) => {
         const text = match[2]
         return { raw, type, level, text };
     }
+
+    const matchSetext = src.match(regex.setextHeading);
+    if (matchSetext) {
+        const type = 'heading';
+        const raw = matchSetext[0];
+        const level = matchSetext[2][0] === '=' ? 1 : 2;
+        const text = matchSetext[1].trim();
+        return { raw, type, level, text };
+    }
+
     return null;
 }
 

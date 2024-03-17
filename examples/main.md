@@ -1,10 +1,12 @@
 # Bands
+======
 
 ## The Who
 
 Who are you? **bold** who!.
 
-## Foo Fighters
+Foo Fighters
+------------
 
 Learning to walk again
 
@@ -14,3 +16,6 @@ Learning to walk again
 ***
 ___
    - - -
+
+Artists
+=======
