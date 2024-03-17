@@ -42,6 +42,17 @@ const heading = (src) => {
     return null;
 }
 
+const indentedCodeBlock = (src) => {
+    const match = src.match(regex.indentedCodeBlock);
+    if (match) {
+        const type = 'indented_code_block';
+        const raw = match[0];
+        const text = raw.replace(/^ {4}/gm, '').trim();
+        return { raw, type, text };
+    }
+    return null;
+}
+
 const textBlock = (src) => {
     const reserved = ['>', '#'];
     if (reserved.includes(src[0])) return null;
@@ -104,6 +115,7 @@ const blockquote = (src) => {
 export default {
     thematicBreak,
     heading,
+    indentedCodeBlock,
     textBlock,
     textInline,
     bold,

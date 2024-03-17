@@ -4,6 +4,8 @@ test('tokenizer should be a function', () => {
     expect(typeof tokenize).toBe('function');
 });
 
+// CommonMark Spec Blocks
+
 describe("thematic break", () => {
     test('should return the thematic_break token', () => {
         const src = '***\n---\n___\n';
@@ -12,6 +14,13 @@ describe("thematic break", () => {
     });
 });
 
+describe("indented code block", () => {
+    test('should return the indented_code_block token', () => {
+        const src = '    a simple\n      indented code block\n';
+        const tokens = tokenize(src);
+        expect(tokens).toMatchSnapshot();
+    });
+})
     
 test('tokenizer get the appropriate tokens', () => {
     const src = `## Foo\nfoo\n**foo**\nfoo **bar** baz`
@@ -46,3 +55,5 @@ describe('blockquote', () => {
         expect(tokens).toMatchSnapshot();
     });
 })
+
+

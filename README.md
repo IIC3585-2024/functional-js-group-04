@@ -44,7 +44,7 @@ Transpile the markdown to html to the output path `./README.html`.
     - [x] [Thematic breaks](https://spec.commonmark.org/0.31.2/#thematic-breaks)
     - [x] [ATX Headings](https://spec.commonmark.org/0.31.2/#atx-headings) `# foo` &rarr; `<h1>foo</h1>`
     - [x] [Setext Headings](https://spec.commonmark.org/0.31.2/#setext-heading) `foo\n===` &rarr; `<h1>foo</h1>`
-    - [ ] [Indented code blocks](https://spec.commonmark.org/0.31.2/#indented-code-blocks)
+    - [x] [Indented code blocks](https://spec.commonmark.org/0.31.2/#indented-code-blocks)*
     - [ ] [Fenced code blocks](https://spec.commonmark.org/0.31.2/#fenced-code-blocks)
     - [ ] [HTML blocks](https://spec.commonmark.org/0.31.2/#html-blocks)
     - [ ] [Link reference definitions](https://spec.commonmark.org/0.31.2/#link-reference-definitions)
@@ -64,3 +64,5 @@ Transpile the markdown to html to the output path `./README.html`.
     - [ ] [Hard line breaks](https://spec.commonmark.org/0.31.2/#hard-line-breaks)
     - [ ] [Soft line breaks](https://spec.commonmark.org/0.31.2/#soft-line-breaks)
     - [ ] [Textual content](https://spec.commonmark.org/0.31.2/#textual-content)
+
+*The indented code blocks interrupt paragraphs in this implementation.

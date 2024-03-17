@@ -44,6 +44,15 @@ const parse = (tokens) => {
                 _recursive_parse(token.children);
                 out += tag(`h${token.level}`, true);
             }
+
+            if (token.type === "indented_code_block") {
+                out += tag("pre");
+                out += tag("code");
+                out += token.text;
+                out += tag("code", true);
+                out += tag("pre", true);
+            }
+
             if (token.type === "text_block") {
                 out += '<p>';
                 _recursive_parse(token.children);

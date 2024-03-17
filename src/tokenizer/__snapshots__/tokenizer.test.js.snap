@@ -64,6 +64,19 @@ exports[`blockquote should return a blockquote object 1`] = `
 ]
 `;
 
+exports[`indented code block should return the indented_code_block token 1`] = `
+[
+  {
+    "raw": "    a simple
+      indented code block
+",
+    "text": "a simple
+  indented code block",
+    "type": "indented_code_block",
+  },
+]
+`;
+
 exports[`thematic break should return the thematic_break token 1`] = `
 [
   {

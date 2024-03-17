@@ -19,6 +19,12 @@ describe("parser", () => {
   
       expect(parse(tokens)).toMatchSnapshot();
     });
+
+    test("indented code block", () => {
+      const tokens = tokenize("    a simple\n      indented code block\n");
+  
+      expect(parse(tokens)).toMatchSnapshot();
+    });
   
     test("text blocks with inline content", () => {
       const tokens = tokenize("foo *bar* **baz** ***qux***");

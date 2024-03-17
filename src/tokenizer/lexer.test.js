@@ -80,11 +80,15 @@ describe('#headings', () => {
     });
 });
 
-describe('#textBlock', () => {
-    test(' should be a function', () => {
-        expect(typeof lexer.textBlock).toBe('function');
-    })
+describe('#indentedCodeBlock', () => {
+    test('case 1', () => {
+        const src = '    if\n        foo';
+        const token = lexer.indentedCodeBlock(src);
+        expect(token).toEqual({ raw: "    if\n        foo", type: 'indented_code_block', text: "if\n    foo" });
+    });
+});
 
+describe('#textBlock', () => {
     test('should match end of src', () => {
         const src = 'foo';
         const token = lexer.textBlock(src);
@@ -105,10 +109,6 @@ describe('#textBlock', () => {
 });
 
 describe('#textInline', () => {
-    test('should be a function', () => {
-        expect(typeof lexer.textInline).toBe('function');
-    });
-
     test('should return null on empty string', () => {
         const src = '';
         const token = lexer.textInline(src);
