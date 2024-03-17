@@ -26,29 +26,31 @@ describe("#thematicBreak", () => {
     });
 });
 
-describe('#heading', () => {
-    test('should return null on empty string', () => {
-        const src = '';
-        const token = lexer.heading(src);
-        expect(token).toBe(null);
-    });
-
-    test('should work on empty header', () => {
-        const src = '##'
-        const token = lexer.heading(src);
-        expect(token).toEqual({ raw: "##", type: 'heading', level: 2, text: '' });
-    });
-
-    test('should return null no match', () => {
-        const src = 'bar';
-        const token = lexer.heading(src);
-        expect(token).toBe(null);
-    });
-
-    test('should return the heading object', () => {
-        const src = '## Hello\nbar'
-        const token = lexer.heading(src);
-        expect(token).toEqual({ raw: "## Hello\n", type: 'heading', level: 2, text: 'Hello' });
+describe('#headings', () => {
+    describe("atx heading", () => {
+        test('empty heading', () => {
+            const src = '#\n';
+            const token = lexer.heading(src);
+            expect(token).toEqual({ raw: "#\n", type: 'heading', level: 1, text: '' });
+        });
+    
+        test('## foo', () => {
+            const src = '## foo\nbar'
+            const token = lexer.heading(src);
+            expect(token).toEqual({ raw: "## foo\n", type: 'heading', level: 2, text: 'foo' });
+        });
+    
+        test('## foo##', () => {
+            const src = '## foo##'
+            const token = lexer.heading(src);
+            expect(token).toEqual({ raw: "## foo##", type: 'heading', level: 2, text: 'foo##' });
+        });
+    
+        test('## foo ###', () => {
+            const src = '## foo ##'
+            const token = lexer.heading(src);
+            expect(token).toEqual({ raw: "## foo ##", type: 'heading', level: 2, text: 'foo' });
+        });
     });
 });
 

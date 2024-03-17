@@ -21,7 +21,7 @@ const thematicBreak = (src) => {
  * @property {string} text - The text content of the heading.
  */
 const heading = (src) => {
-    const match = src.match(regex.heading);
+    const match = src.match(regex.atxHeading);
     if (match) {
         const type = 'heading';
         const raw = match[0];

@@ -35,10 +35,11 @@ Transpile the markdown to html to the output path `./README.html`.
 ## Roadmap
 
 - [x] Support raw text `foo` &rarr; `<p>foo</p>`
-- [x] Support headings  `# foo` &rarr; `<h1>foo</h1>`
 - [x] Support for decorations
   - [x] Bold inline `foo **bar** baz` &rarr; `<p>foo <strong>bar</strong> baz</p>`
   - [x] Italic inline `foo *bar* baz` &rarr; `<p>foo <em>bar</em> baz</p>`
   - [x] Bold and italic
 - [ ] Support for [leaf blocks](https://spec.commonmark.org/0.31.2/#leaf-blocks)
   - [x] Thematic breaks
+  - [ ] Support headings
+    - [x] ATX Headings `# foo` &rarr; `<h1>foo</h1>`
