@@ -40,9 +40,9 @@ const parse = (tokens) => {
             }
 
             if (token.type === "heading") {
-                out += tag("h1");
+                out += tag(`h${token.level}`);
                 _recursive_parse(token.children);
-                out += tag("h1", true);
+                out += tag(`h${token.level}`, true);
             }
             if (token.type === "text_block") {
                 out += '<p>';
