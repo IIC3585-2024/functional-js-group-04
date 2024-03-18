@@ -34,22 +34,20 @@ const tokenizeBlocks = (src) => {
             if (previousToken && previousToken.type === 'paragraph') {
                 previousToken.text += '\n' + token.text;
                 previousToken.raw += token.raw;
-                continue;
+                previousToken.children = tokenizeInline(previousToken.text);
+                continue
             }
+            token.children = tokenizeInline(token.text);
         }
 
-        // else if (token = lexer.textBlock(src)) {
-        //     src = src.substring(token.raw.length);
-        //     token.children = tokenizeInline(token.text);
-        // }
-
-        // else if (token = lexer.blockquote(src)) {
-        //     src = src.substring(token.raw.length);
-        //     token.children = tokenizeBlocks(token.text);
-        // }
+        else if (token = lexer.blockquote(src)) {
+            src = src.substring(token.raw.length);
+            token.children = tokenizeBlocks(token.text);
+        }
 
         // Throws error if the src is not empty and no token is matched
         else if (src) {
+            (src)
             throw new Error('Infinite loop', src);
         }
 

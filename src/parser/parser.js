@@ -63,7 +63,7 @@ const parse = (tokens) => {
 
             if (token.type === "paragraph") {
                 out += '<p>';
-                out += token.text;
+                _recursive_parse(token.children);
                 out += '</p>';
             }
 
@@ -71,12 +71,6 @@ const parse = (tokens) => {
                 // do nothing, blank lines are ignored
             }
 
-            if (token.type === "text_block") {
-                out += '<p>';
-                _recursive_parse(token.children);
-                out += '</p>';
-            }
-    
             if (token.type === "text_inline") {
                 out += token.text;
             }

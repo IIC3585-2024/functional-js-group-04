@@ -1,7 +1,14 @@
 
 
 const regex = {
+    
+
     // Common mark compliant
+    // Common
+    unicodeWhitespaceChar: /\s/,
+    unicodeWhiteSpace: /\s+/,
+    unicodePunctuationChar: /\p{Sc}|\p{P}/u,
+    // Blocks
     thematicBreak: /^ {0,3}(?:(?:[\*-_][ \t]*){3,})(?:\n|$)/,
     atxHeading: /^ {0,3}(#{1,6})[ \t]*(.*?)(?:[ \t]+#+[ \t]*)?(?:\n|$)/,
     setextHeading: /^((?:.+\n)+)( {0,3}([-=])+[ \t]*)(?:\n|$)/, // The first group have an extra \n that must be removed in the lexer
@@ -17,13 +24,14 @@ const regex = {
      */
     fencedCodeBlock: /^( {0,3})?(`{3,}|~{3,})(.*?)?[ \t]*\n([\w\W]*?)\n(?: {0,3})?\2[ \t]*(?:\n|$)/,
     
+    // Inline
+    delimiterRun: /([*_]+)/,
     // Other
-    textBlock: /^(.+)(?:\n|$)/,
     blockquote: /^> {0,}(.*)(?:\n|$)/,
 
     // Inline
-    textInline: /^([\w\s\?\!\.\']+)/,
-    bold: /^\*\*(\*?.*?\*?)\*\*/,
+    textInline: /^([\w\W]+)/,
+    bold: /^\*\*([\w\W]*?)\*\*/,
     italic: /^\*(.*?)\*/,
 }
 

@@ -148,23 +148,128 @@ describe('#blankLine', () => {
     })
 });
 
-describe('#textBlock', () => {
-    test('should match end of src', () => {
-        const src = 'foo';
-        const token = lexer.textBlock(src);
-        expect(token).toEqual({ raw: "foo", type: 'text_block', text: 'foo' });
+describe("emphasis and strong emphasis", () => {
+    describe('#delimiterRun', () => {
+        test('basic', () => {
+            const src = '***';
+            const token = lexer.delimiterRun(src);
+            expect (token).toEqual({ raw: '***', type: 'delimiter_run', text: '***' });
+        });
+    
+        test('no match', () => {
+            const src = 'foo';
+            const token = lexer.delimiterRun(src);
+            expect(token).toBe(null);
+        });
     });
 
-    test('should return the text object', () => {
-        const src = 'how are you\nbar';
-        const token = lexer.textBlock(src);
-        expect(token).toEqual({ raw: "how are you\n", type: 'text_block', text: 'how are you' });
+    describe('#leftFlankingDelimiterRun', () => {
+        describe("match", () => {
+            test('case 1', () => {
+                const src = '***abc';
+                const token = lexer.leftFlankingDelimiterRun(src);
+                expect(token).toEqual({ raw: '***', type: 'left_flanking_delimiter_run', text: '***' });
+            });
+    
+            test('case 2', () => {
+                const src = '_abc';
+                const token = lexer.leftFlankingDelimiterRun(src);
+                expect(token).toEqual({ raw: '_', type: 'left_flanking_delimiter_run', text: '_' });
+            });
+    
+            test('case 3', () => {
+                const src = '**"abc"';
+                const token = lexer.leftFlankingDelimiterRun(src);
+                expect(token).toEqual({ raw: '**', type: 'left_flanking_delimiter_run', text: '**' });
+            });
+    
+            test('case 4', () => {
+                const src = '_"abc"';
+                const token = lexer.leftFlankingDelimiterRun(src);
+                expect(token).toEqual({ raw: '_', type: 'left_flanking_delimiter_run', text: '_' });
+            });
+        });
+
+
+        describe("no match", () => {
+            test("case 2: abc***", () => {
+                const src = 'abc***';
+                const token = lexer.leftFlankingDelimiterRun(src, "c");
+                expect(token).toBe(null);
+            });
+
+            test("case 3: abc_", () => {
+                const src = 'abc_';
+                const token = lexer.leftFlankingDelimiterRun(src, "c");
+                expect(token).toBe(null);
+            });
+
+            test("case 4: \"abc\"**", () => {
+                const src = '"abc"**';
+                const token = lexer.leftFlankingDelimiterRun(src, '"');
+                expect(token).toBe(null);
+            });
+
+            test("case 5: \"abc\"_", () => {
+                const src = '"abc"_';
+                const token = lexer.leftFlankingDelimiterRun(src, '"');
+                expect(token).toBe(null);
+            });
+        })
     });
 
-    test('should not match blockquote', () => {
-        const src = '> foo\nbar';
-        const token = lexer.textBlock(src);
-        expect(token).toEqual(null);
+    describe('#rightFlankingDelimiterRun', () => {
+        describe("match", () => {
+            test('case 1: abc***', () => {
+                const src = '***';
+                const token = lexer.rightFlankingDelimiterRun(src, "c");
+                expect(token).toEqual({ raw: '***', type: 'right_flanking_delimiter_run', text: '***' });
+            });
+    
+            test('case 2: abc_', () => {
+                const src = '_';
+                const token = lexer.rightFlankingDelimiterRun(src, "c");
+                expect(token).toEqual({ raw: '_', type: 'right_flanking_delimiter_run', text: '_' });
+            });
+    
+            test('case 3: "abc"**', () => {
+                const src = '**';
+                const token = lexer.rightFlankingDelimiterRun(src, '"');
+                expect(token).toEqual({ raw: '**', type: 'right_flanking_delimiter_run', text: '**' });
+            });
+    
+            test('case 4: "abc"_', () => {
+                const src = "_";
+                const token = lexer.rightFlankingDelimiterRun(src, '"');
+                expect(token).toEqual({ raw: '_', type: 'right_flanking_delimiter_run', text: '_' });
+            });
+        })
+
+        describe("no match", () => {
+            test('case 1', () => {
+                const src = '***abc';
+                const token = lexer.rightFlankingDelimiterRun(src);
+                expect(token).toBe(null);
+            });
+    
+            test('case 2', () => {
+                const src = '_abc';
+                const token = lexer.rightFlankingDelimiterRun(src);
+                expect(token).toBe(null);
+            });
+    
+            test('case 3', () => {
+                const src = '**"abc"';
+                const token = lexer.rightFlankingDelimiterRun(src);
+                expect(token).toBe(null);
+            });
+    
+            test('case 4', () => {
+                const src = '_"abc"';
+                const token = lexer.rightFlankingDelimiterRun(src);
+                expect(token).toBe(null);
+            });
+        });
     });
 });
 
@@ -220,7 +325,7 @@ describe('#blockquote', () => {
                 type: 'blockquote',
                 text: 'foo',
                 children: [
-                    { raw: "foo\n", type: 'text_block', text: 'foo' },
+                    { raw: "foo\n", type: 'paragraph', text: 'foo' },
                 ]
             }
         );

@@ -87,21 +87,10 @@ const blankLine = (src) => {
     return null;
 }
 
-const textBlock = (src) => {
-    const reserved = ['>', '#'];
+const textInline = (src) => {
+    const reserved = ['[', '![', '*', '_'];
     if (reserved.includes(src[0])) return null;
 
-    const match = src.match(regex.textBlock);
-    if (match) {
-        const type = 'text_block';
-        const raw = match[0];
-        const text = match[1];
-        return { raw, type, text };
-    }
-    return null;
-}
-
-const textInline = (src) => {
     const match = src.match(regex.textInline);
     if (match) {
         const type = 'text_inline';
@@ -140,10 +129,59 @@ const blockquote = (src) => {
         const type = 'blockquote';
         const raw = match[0];
         const text = match[1];
-        return { raw, type, text, children : [textBlock(text + '\n')]};
+        return { raw, type, text, children : [paragraph(text + '\n')]};
     }
     return null;
 
+}
+
+const delimiterRun = (src) => {
+    const match = src.match(regex.delimiterRun);
+    if (match) {
+        const type = 'delimiter_run';
+        const raw = match[0];
+        const text = match[1];
+        return { raw, type, text };
+    }
+    return null;
+}
+
+const leftFlankingDelimiterRun = (src, prevChar = "\n") => {
+    const token = delimiterRun(src);
+    if (!token) return null;
+
+    token['type'] = 'left_flanking_delimiter_run';
+
+    const nextChar = src[src.indexOf(token.text) + token.raw.length] || "\n";
+    
+    const condition1 = !regex.unicodeWhitespaceChar.test(nextChar);
+    const condition2a = !regex.unicodePunctuationChar.test(prevChar);
+    const condition2b = regex.unicodePunctuationChar.test(prevChar) && (regex.unicodePunctuationChar.test(nextChar) || regex.unicodeWhitespaceChar.test(nextChar));
+
+    if (condition1 && (condition2a || condition2b)) return token;
+
+    return null;
+}
+
+const rightFlankingDelimiterRun = (src, prevChar = "\n") => {
+    const token = delimiterRun(src);
+    if (!token) return null;
+
+    token['type'] = 'right_flanking_delimiter_run';
+
+    const nextChar = src[src.indexOf(token.text) + token.raw.length] || "\n";
+    
+    const condition1 = !regex.unicodeWhitespaceChar.test(prevChar);
+    const condition2a = !regex.unicodePunctuationChar.test(prevChar);
+
+    const precededByPunctuationCharacter = regex.unicodePunctuationChar.test(prevChar);
+    const followedByUnicodeWhiteSpace = regex.unicodeWhitespaceChar.test(nextChar);
+    const followedByPunctuationCharacter = regex.unicodePunctuationChar.test(nextChar);
+    const condition2b = precededByPunctuationCharacter && (followedByUnicodeWhiteSpace || followedByPunctuationCharacter);
+
+    if (condition1 && (condition2a || condition2b)) return token;
+
+    return null;
 }
 
 export default {
@@ -153,7 +191,9 @@ export default {
     fencedCodeBlock,
     paragraph,
     blankLine,
-    textBlock,
+    delimiterRun,
+    leftFlankingDelimiterRun,
+    rightFlankingDelimiterRun,
     textInline,
     bold,
     italic,
