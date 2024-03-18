@@ -14,6 +14,14 @@ describe("thematic break", () => {
     });
 });
 
+describe("headings", () => {
+    test('should return the heading token', () => {
+        const src = '# foo\n## foo\n### foo\n#### foo\n##### foo\n###### foo\n';
+        const tokens = tokenize(src);
+        expect(tokens).toMatchSnapshot();
+    });
+});
+
 describe("indented code block", () => {
     test('should return the indented_code_block token', () => {
         const src = '    a simple\n      indented code block\n';
@@ -30,39 +38,24 @@ describe("fenced code block", () => {
     });
 });
 
-    
-test('tokenizer get the appropriate tokens', () => {
-    const src = `## Foo\nfoo\n**foo**\nfoo **bar** baz`
-    const tokens = tokenize(src)
-    expect(tokens).toMatchSnapshot();
+describe("paragraph", () => {
+    test('should return the paragraph token', () => {
+        const src = 'foo\n';
+        const tokens = tokenize(src);
+        expect(tokens).toMatchSnapshot();
+    });
+
+    test('should return one token on multiple lines', () => {
+        const src = 'foo\nbar\nbaz\n';
+        const tokens = tokenize(src);
+        expect(tokens).toMatchSnapshot();
+    });
 });
 
-describe('tokenize headers', () => {
-    test('h1 ... h6', () => {
-        const src = `# foo\n ## foo\n ### foo\n #### foo\n ##### foo\n ###### foo\n`
-        const tokens = tokenize(src)
-        expect(tokens).toMatchSnapshot();
-    });
-
-    test('with inline text decoration', () => {
-        const src = `# foo **bar** baz`
-        const tokens = tokenize(src)
-        expect(tokens).toMatchSnapshot();
-    });
-})
-
-test('tokenizer with inline content', () => {
-    const src = `foo *bar* **baz** ***qux***`;
-    const tokens = tokenize(src);
-    expect(tokens).toMatchSnapshot();
-})
-
-describe('blockquote', () => {
-    test('should return a blockquote object', () => {
-        const src = `> foo\n> bar\n> baz`;
+describe("blank line", () => {
+    test('should return the blank_line token', () => {
+        const src = '\n';
         const tokens = tokenize(src);
         expect(tokens).toMatchSnapshot();
     });
 })
-
-

@@ -31,21 +31,9 @@ describe("parser", () => {
   
       expect(parse(tokens)).toMatchSnapshot();
     });
-  
-    test("text blocks with inline content", () => {
-      const tokens = tokenize("foo *bar* **baz** ***qux***");
-  
-      expect(parse(tokens)).toMatchSnapshot();
-    });
-  
-    test("other common characters", () => {
-      const tokens = tokenize("foo! bar? baz. qux");
-  
-      expect(parse(tokens)).toMatchSnapshot();
-    });
-  
-    test("blockquote", () => {
-      const tokens = tokenize("> foo");
+
+    test("paragraphs", () => {
+      const tokens = tokenize("foo\nbar\nbaz\n");
   
       expect(parse(tokens)).toMatchSnapshot();
     });

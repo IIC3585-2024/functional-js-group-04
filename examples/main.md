@@ -44,6 +44,20 @@ function foo(x) {
 
 ```
 
+### Paragraphs
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
+dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
+dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+mollit anim id est laborum.
+
 ### Blank lines
 
 ###### 1
@@ -52,29 +66,3 @@ function foo(x) {
 
 
 ###### 6
-
-
-# Naive support
-
-# Bands
-
-======
-
-## The Who
-
-Who are you? **bold** who!.
-
-Foo Fighters
-------------
-
-Learning to walk again
-
-> A million miles away Your signal in the distance To whom it may concern I think I lost my way Getting good at starting over Every time that I return Learning to walk again I believe I've waited long enough Where do I begin? Learning to talk again Can't you see I've waited long enough? Where do I begin?
-
----
-***
-___
-   - - -
-
-Artists
-=======

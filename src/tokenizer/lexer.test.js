@@ -114,6 +114,14 @@ describe('#fencedCodeBlock', () => {
     });
 });
 
+describe('#paragraph', () => {
+    test('basic', () => {
+        const src = 'foo\n';
+        const token = lexer.paragraph(src);
+        expect(token).toEqual({ raw: "foo\n", type: 'paragraph', text: 'foo' });
+    });
+});
+
 describe('#blankLine', () => {
     test('no characters', () => {
         const src = '\n';

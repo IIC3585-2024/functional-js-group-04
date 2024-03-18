@@ -6,6 +6,7 @@ const regex = {
     atxHeading: /^ {0,3}(#{1,6})[ \t]*(.*?)(?:[ \t]+#+[ \t]*)?(?:\n|$)/,
     setextHeading: /^((?:.+\n)+)( {0,3}([-=])+[ \t]*)(?:\n|$)/, // The first group have an extra \n that must be removed in the lexer
     indentedCodeBlock: /^( {4,}.*\n*)+(?:\n|$)/,
+    paragraph: /^(.*)(?:\n|$)/, // Note that multiple consecutive paragraph must be merged by the tokenizer.
     blankLine: /^([ \t]*)\n/,
     /**
      * Groups

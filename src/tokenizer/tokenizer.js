@@ -2,61 +2,59 @@ import lexer from './lexer.js';
 
 const tokenizeBlocks = (src) => {
     const tokens = [];
+    let previousToken = null;
 
     while (src) {
         let token = null;
 
         if (token = lexer.thematicBreak(src)) {
             src = src.substring(token.raw.length);
-            tokens.push(token);
-            continue
         }
 
-        if (token = lexer.heading(src)) {
+        else if (token = lexer.heading(src)) {
             src = src.substring(token.raw.length);
-            tokens.push(token);
             token.children = tokenizeInline(token.text);
-            continue
         }
 
-        if (token = lexer.indentedCodeBlock(src)) {
+        else if (token = lexer.indentedCodeBlock(src)) {
             src = src.substring(token.raw.length);
-            tokens.push(token);
-            continue
         }
 
-        if (token = lexer.fencedCodeBlock(src)) {
+        else if (token = lexer.fencedCodeBlock(src)) {
             src = src.substring(token.raw.length);
-            tokens.push(token);
-            continue
         }
-
-        if (token = lexer.textBlock(src)) {
+            
+        else if (token = lexer.blankLine(src)) {
             src = src.substring(token.raw.length);
-            tokens.push(token);
-
-            token.children = tokenizeInline(token.text);
-            continue
         }
 
-        if (token = lexer.blockquote(src)) {
+        else if (token = lexer.paragraph(src)) {
             src = src.substring(token.raw.length);
-            tokens.push(token);
 
-            token.children = tokenizeBlocks(token.text);
-            continue
+            if (previousToken && previousToken.type === 'paragraph') {
+                previousToken.text += '\n' + token.text;
+                previousToken.raw += token.raw;
+                continue;
+            }
         }
 
-        if (token = lexer.blankLine(src)) {
-            src = src.substring(token.raw.length);
-            tokens.push(token);
-            continue
-        }
+        // else if (token = lexer.textBlock(src)) {
+        //     src = src.substring(token.raw.length);
+        //     token.children = tokenizeInline(token.text);
+        // }
+
+        // else if (token = lexer.blockquote(src)) {
+        //     src = src.substring(token.raw.length);
+        //     token.children = tokenizeBlocks(token.text);
+        // }
 
         // Throws error if the src is not empty and no token is matched
-        if (src) {
+        else if (src) {
             throw new Error('Infinite loop', src);
         }
+
+        tokens.push(token);
+        previousToken = token;
     }
 
     return tokens;

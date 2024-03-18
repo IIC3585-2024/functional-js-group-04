@@ -61,6 +61,12 @@ const parse = (tokens) => {
                 out += tag("pre", true);
             }
 
+            if (token.type === "paragraph") {
+                out += '<p>';
+                out += token.text;
+                out += '</p>';
+            }
+
             if (token.type === "blank_line") {
                 // do nothing, blank lines are ignored
             }

@@ -66,6 +66,17 @@ const fencedCodeBlock = (src) => {
     return null;
 }
 
+const paragraph = (src) => {
+    const match = src.match(regex.paragraph);
+    if (match) {
+        const type = 'paragraph';
+        const raw = match[0];
+        const text = match[1];
+        return { raw, type, text };
+    }
+    return null;
+}
+
 const blankLine = (src) => {
     const match = src.match(regex.blankLine);
     if (match) {
@@ -140,6 +151,7 @@ export default {
     heading,
     indentedCodeBlock,
     fencedCodeBlock,
+    paragraph,
     blankLine,
     textBlock,
     textInline,

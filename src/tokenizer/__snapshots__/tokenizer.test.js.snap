@@ -1,65 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`blockquote should return a blockquote object 1`] = `
+exports[`blank line should return the blank_line token 1`] = `
 [
   {
-    "children": [
-      {
-        "children": [
-          {
-            "raw": "foo",
-            "text": "foo",
-            "type": "text_inline",
-          },
-        ],
-        "raw": "foo",
-        "text": "foo",
-        "type": "text_block",
-      },
-    ],
-    "raw": "> foo
+    "raw": "
 ",
-    "text": "foo",
-    "type": "blockquote",
-  },
-  {
-    "children": [
-      {
-        "children": [
-          {
-            "raw": "bar",
-            "text": "bar",
-            "type": "text_inline",
-          },
-        ],
-        "raw": "bar",
-        "text": "bar",
-        "type": "text_block",
-      },
-    ],
-    "raw": "> bar
-",
-    "text": "bar",
-    "type": "blockquote",
-  },
-  {
-    "children": [
-      {
-        "children": [
-          {
-            "raw": "baz",
-            "text": "baz",
-            "type": "text_inline",
-          },
-        ],
-        "raw": "baz",
-        "text": "baz",
-        "type": "text_block",
-      },
-    ],
-    "raw": "> baz",
-    "text": "baz",
-    "type": "blockquote",
+    "type": "blank_line",
   },
 ]
 `;
@@ -80,40 +26,7 @@ function foo(x) {
 ]
 `;
 
-exports[`indented code block should return the indented_code_block token 1`] = `
-[
-  {
-    "raw": "    a simple
-      indented code block
-",
-    "text": "a simple
-  indented code block",
-    "type": "indented_code_block",
-  },
-]
-`;
-
-exports[`thematic break should return the thematic_break token 1`] = `
-[
-  {
-    "raw": "***
-",
-    "type": "thematic_break",
-  },
-  {
-    "raw": "---
-",
-    "type": "thematic_break",
-  },
-  {
-    "raw": "___
-",
-    "type": "thematic_break",
-  },
-]
-`;
-
-exports[`tokenize headers h1 ... h6 1`] = `
+exports[`headings should return the heading token 1`] = `
 [
   {
     "children": [
@@ -138,7 +51,7 @@ exports[`tokenize headers h1 ... h6 1`] = `
       },
     ],
     "level": 2,
-    "raw": " ## foo
+    "raw": "## foo
 ",
     "text": "foo",
     "type": "heading",
@@ -152,7 +65,7 @@ exports[`tokenize headers h1 ... h6 1`] = `
       },
     ],
     "level": 3,
-    "raw": " ### foo
+    "raw": "### foo
 ",
     "text": "foo",
     "type": "heading",
@@ -166,7 +79,7 @@ exports[`tokenize headers h1 ... h6 1`] = `
       },
     ],
     "level": 4,
-    "raw": " #### foo
+    "raw": "#### foo
 ",
     "text": "foo",
     "type": "heading",
@@ -180,7 +93,7 @@ exports[`tokenize headers h1 ... h6 1`] = `
       },
     ],
     "level": 5,
-    "raw": " ##### foo
+    "raw": "##### foo
 ",
     "text": "foo",
     "type": "heading",
@@ -194,7 +107,7 @@ exports[`tokenize headers h1 ... h6 1`] = `
       },
     ],
     "level": 6,
-    "raw": " ###### foo
+    "raw": "###### foo
 ",
     "text": "foo",
     "type": "heading",
@@ -202,188 +115,61 @@ exports[`tokenize headers h1 ... h6 1`] = `
 ]
 `;
 
-exports[`tokenize headers with inline text decoration 1`] = `
+exports[`indented code block should return the indented_code_block token 1`] = `
 [
   {
-    "children": [
-      {
-        "raw": "foo ",
-        "text": "foo ",
-        "type": "text_inline",
-      },
-      {
-        "children": [
-          {
-            "raw": "bar",
-            "text": "bar",
-            "type": "text_inline",
-          },
-        ],
-        "raw": "**bar**",
-        "text": "bar",
-        "type": "bold",
-      },
-      {
-        "raw": " baz",
-        "text": " baz",
-        "type": "text_inline",
-      },
-    ],
-    "level": 1,
-    "raw": "# foo **bar** baz",
-    "text": "foo **bar** baz",
-    "type": "heading",
+    "raw": "    a simple
+      indented code block
+",
+    "text": "a simple
+  indented code block",
+    "type": "indented_code_block",
   },
 ]
 `;
 
-exports[`tokenizer get the appropriate tokens 1`] = `
+exports[`paragraph should return one token on multiple lines 1`] = `
 [
   {
-    "children": [
-      {
-        "raw": "Foo",
-        "text": "Foo",
-        "type": "text_inline",
-      },
-    ],
-    "level": 2,
-    "raw": "## Foo
+    "raw": "foo
+bar
+baz
 ",
-    "text": "Foo",
-    "type": "heading",
+    "text": "foo
+bar
+baz",
+    "type": "paragraph",
   },
+]
+`;
+
+exports[`paragraph should return the paragraph token 1`] = `
+[
   {
-    "children": [
-      {
-        "raw": "foo",
-        "text": "foo",
-        "type": "text_inline",
-      },
-    ],
     "raw": "foo
 ",
     "text": "foo",
-    "type": "text_block",
-  },
-  {
-    "children": [
-      {
-        "children": [
-          {
-            "raw": "foo",
-            "text": "foo",
-            "type": "text_inline",
-          },
-        ],
-        "raw": "**foo**",
-        "text": "foo",
-        "type": "bold",
-      },
-    ],
-    "raw": "**foo**
-",
-    "text": "**foo**",
-    "type": "text_block",
-  },
-  {
-    "children": [
-      {
-        "raw": "foo ",
-        "text": "foo ",
-        "type": "text_inline",
-      },
-      {
-        "children": [
-          {
-            "raw": "bar",
-            "text": "bar",
-            "type": "text_inline",
-          },
-        ],
-        "raw": "**bar**",
-        "text": "bar",
-        "type": "bold",
-      },
-      {
-        "raw": " baz",
-        "text": " baz",
-        "type": "text_inline",
-      },
-    ],
-    "raw": "foo **bar** baz",
-    "text": "foo **bar** baz",
-    "type": "text_block",
+    "type": "paragraph",
   },
 ]
 `;
 
-exports[`tokenizer with inline content 1`] = `
+exports[`thematic break should return the thematic_break token 1`] = `
 [
   {
-    "children": [
-      {
-        "raw": "foo ",
-        "text": "foo ",
-        "type": "text_inline",
-      },
-      {
-        "children": [
-          {
-            "raw": "bar",
-            "text": "bar",
-            "type": "text_inline",
-          },
-        ],
-        "raw": "*bar*",
-        "text": "bar",
-        "type": "italic",
-      },
-      {
-        "raw": " ",
-        "text": " ",
-        "type": "text_inline",
-      },
-      {
-        "children": [
-          {
-            "raw": "baz",
-            "text": "baz",
-            "type": "text_inline",
-          },
-        ],
-        "raw": "**baz**",
-        "text": "baz",
-        "type": "bold",
-      },
-      {
-        "raw": " ",
-        "text": " ",
-        "type": "text_inline",
-      },
-      {
-        "children": [
-          {
-            "children": [
-              {
-                "raw": "qux",
-                "text": "qux",
-                "type": "text_inline",
-              },
-            ],
-            "raw": "*qux*",
-            "text": "qux",
-            "type": "italic",
-          },
-        ],
-        "raw": "***qux***",
-        "text": "*qux*",
-        "type": "bold",
-      },
-    ],
-    "raw": "foo *bar* **baz** ***qux***",
-    "text": "foo *bar* **baz** ***qux***",
-    "type": "text_block",
+    "raw": "***
+",
+    "type": "thematic_break",
+  },
+  {
+    "raw": "---
+",
+    "type": "thematic_break",
+  },
+  {
+    "raw": "___
+",
+    "type": "thematic_break",
   },
 ]
 `;

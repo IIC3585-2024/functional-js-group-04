@@ -34,11 +34,6 @@ Transpile the markdown to html to the output path `./README.html`.
 
 ## Roadmap
 
-- [x] Support raw text `foo` &rarr; `<p>foo</p>`
-- [x] Support for decorations
-  - [x] Bold inline `foo **bar** baz` &rarr; `<p>foo <strong>bar</strong> baz</p>`
-  - [x] Italic inline `foo *bar* baz` &rarr; `<p>foo <em>bar</em> baz</p>`
-  - [x] Bold and italic
 - [ ] Support for [common mark spec](https://spec.commonmark.org/0.31.2)
   - [ ] [Leaf blocks](https://spec.commonmark.org/0.31.2/#leaf-blocks)
     - [x] [Thematic breaks](https://spec.commonmark.org/0.31.2/#thematic-breaks)
@@ -48,7 +43,7 @@ Transpile the markdown to html to the output path `./README.html`.
     - [x] [Fenced code blocks](https://spec.commonmark.org/0.31.2/#fenced-code-blocks)
     - [ ] [HTML blocks](https://spec.commonmark.org/0.31.2/#html-blocks)
     - [ ] [Link reference definitions](https://spec.commonmark.org/0.31.2/#link-reference-definitions)
-    - [ ] [Paragraphs](https://spec.commonmark.org/0.31.2/#paragraphs)
+    - [x] [Paragraphs](https://spec.commonmark.org/0.31.2/#paragraphs)
     - [x] [Blank lines](https://spec.commonmark.org/0.31.2/#blank-lines)
   - [ ] [Container blocks](https://spec.commonmark.org/0.31.2/#container-blocks)
     - [ ] [Block Quotes](https://spec.commonmark.org/0.31.2/#block-quotes)
