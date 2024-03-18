@@ -47,6 +47,12 @@ const tokenizeBlocks = (src) => {
             continue
         }
 
+        if (token = lexer.blankLine(src)) {
+            src = src.substring(token.raw.length);
+            tokens.push(token);
+            continue
+        }
+
         // Throws error if the src is not empty and no token is matched
         if (src) {
             throw new Error('Infinite loop', src);

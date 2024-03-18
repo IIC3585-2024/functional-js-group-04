@@ -49,7 +49,7 @@ Transpile the markdown to html to the output path `./README.html`.
     - [ ] [HTML blocks](https://spec.commonmark.org/0.31.2/#html-blocks)
     - [ ] [Link reference definitions](https://spec.commonmark.org/0.31.2/#link-reference-definitions)
     - [ ] [Paragraphs](https://spec.commonmark.org/0.31.2/#paragraphs)
-    - [ ] [Blank lines](https://spec.commonmark.org/0.31.2/#blank-lines)
+    - [x] [Blank lines](https://spec.commonmark.org/0.31.2/#blank-lines)
   - [ ] [Container blocks](https://spec.commonmark.org/0.31.2/#container-blocks)
     - [ ] [Block Quotes](https://spec.commonmark.org/0.31.2/#block-quotes)
     - [ ] [List items](https://spec.commonmark.org/0.31.2/#list-items)

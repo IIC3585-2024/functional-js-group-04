@@ -114,6 +114,32 @@ describe('#fencedCodeBlock', () => {
     });
 });
 
+describe('#blankLine', () => {
+    test('no characters', () => {
+        const src = '\n';
+        const token = lexer.blankLine(src);
+        expect(token).toEqual({ raw: '\n', type: 'blank_line' });
+    })
+
+    test('spaces', () => {
+        const src = '   \n';
+        const token = lexer.blankLine(src);
+        expect(token).toEqual({ raw: '   \n', type: 'blank_line' });
+    })
+
+    test('tabs', () => {
+        const src = '\t\t\t\n';
+        const token = lexer.blankLine(src);
+        expect(token).toEqual({ raw: '\t\t\t\n', type: 'blank_line' });
+    })
+
+    test('spaces or tabs', () => {
+        const src = '  \t  \n';
+        const token = lexer.blankLine(src);
+        expect(token).toEqual({ raw: '  \t  \n', type: 'blank_line' });
+    })
+});
+
 describe('#textBlock', () => {
     test('should match end of src', () => {
         const src = 'foo';

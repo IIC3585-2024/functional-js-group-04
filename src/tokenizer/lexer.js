@@ -66,6 +66,16 @@ const fencedCodeBlock = (src) => {
     return null;
 }
 
+const blankLine = (src) => {
+    const match = src.match(regex.blankLine);
+    if (match) {
+        const type = 'blank_line';
+        const raw = match[0];
+        return { raw, type };
+    }
+    return null;
+}
+
 const textBlock = (src) => {
     const reserved = ['>', '#'];
     if (reserved.includes(src[0])) return null;
@@ -130,6 +140,7 @@ export default {
     heading,
     indentedCodeBlock,
     fencedCodeBlock,
+    blankLine,
     textBlock,
     textInline,
     bold,

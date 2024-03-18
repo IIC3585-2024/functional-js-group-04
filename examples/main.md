@@ -44,6 +44,16 @@ function foo(x) {
 
 ```
 
+### Blank lines
+
+###### 1
+
+
+
+
+###### 6
+
+
 # Naive support
 
 # Bands

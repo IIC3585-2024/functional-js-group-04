@@ -61,6 +61,10 @@ const parse = (tokens) => {
                 out += tag("pre", true);
             }
 
+            if (token.type === "blank_line") {
+                // do nothing, blank lines are ignored
+            }
+
             if (token.type === "text_block") {
                 out += '<p>';
                 _recursive_parse(token.children);
