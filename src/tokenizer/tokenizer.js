@@ -25,6 +25,12 @@ const tokenizeBlocks = (src) => {
             continue
         }
 
+        if (token = lexer.fencedCodeBlock(src)) {
+            src = src.substring(token.raw.length);
+            tokens.push(token);
+            continue
+        }
+
         if (token = lexer.textBlock(src)) {
             src = src.substring(token.raw.length);
             tokens.push(token);

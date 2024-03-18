@@ -20,7 +20,16 @@ describe("indented code block", () => {
         const tokens = tokenize(src);
         expect(tokens).toMatchSnapshot();
     });
-})
+});
+
+describe("fenced code block", () => {
+    test('should return the fenced_code_block token', () => {
+        const src = '```javascript\nfunction foo(x) {\n  return 3\n}\n```';
+        const tokens = tokenize(src);
+        expect(tokens).toMatchSnapshot();
+    });
+});
+
     
 test('tokenizer get the appropriate tokens', () => {
     const src = `## Foo\nfoo\n**foo**\nfoo **bar** baz`

@@ -32,10 +32,22 @@ Heading 2
        code();
     }
 
+### Fenced code blocks
+
+```javascript
+function foo(x) {
+  return 3
+}
+```
+
+```javascript
+
+```
 
 # Naive support
 
 # Bands
+
 ======
 
 ## The Who
@@ -56,4 +68,3 @@ ___
 
 Artists
 =======
-

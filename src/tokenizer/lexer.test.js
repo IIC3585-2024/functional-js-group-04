@@ -88,6 +88,32 @@ describe('#indentedCodeBlock', () => {
     });
 });
 
+describe('#fencedCodeBlock', () => {
+    test('case 1', () => {
+        const src = '```\nfoo\n```';
+        const token = lexer.fencedCodeBlock(src);
+        expect(token).toEqual({ raw: "```\nfoo\n```", type: 'fenced_code_block', text: 'foo' });
+    });
+
+    test('strip N first spaces of preceding block fence indentation', () => {
+        const src = '   ```\n    foo\n  ```';
+        const token = lexer.fencedCodeBlock(src);
+        expect(token).toEqual({ raw: "   ```\n    foo\n  ```", type: 'fenced_code_block', text: ' foo' });
+    });
+
+    test('with all elements of spec', () => {
+        const src = '   ```javascript\n   function foo(x) {\n     return 3\n}\n  ```';
+        const token = lexer.fencedCodeBlock(src);
+        expect(token).toEqual({ raw: "   ```javascript\n   function foo(x) {\n     return 3\n}\n  ```", type: 'fenced_code_block', text: 'function foo(x) {\n  return 3\n}' });
+    });
+
+    test('digest a single code block when multiple code blocks', () => {
+        const src = '```\nfoo\n```\n```\nbar\n```';
+        const token = lexer.fencedCodeBlock(src);
+        expect(token).toEqual({ raw: "```\nfoo\n```\n", type: 'fenced_code_block', text: 'foo' });
+    });
+});
+
 describe('#textBlock', () => {
     test('should match end of src', () => {
         const src = 'foo';

@@ -64,6 +64,22 @@ exports[`blockquote should return a blockquote object 1`] = `
 ]
 `;
 
+exports[`fenced code block should return the fenced_code_block token 1`] = `
+[
+  {
+    "raw": "\`\`\`javascript
+function foo(x) {
+  return 3
+}
+\`\`\`",
+    "text": "function foo(x) {
+  return 3
+}",
+    "type": "fenced_code_block",
+  },
+]
+`;
+
 exports[`indented code block should return the indented_code_block token 1`] = `
 [
   {

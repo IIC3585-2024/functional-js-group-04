@@ -45,7 +45,7 @@ Transpile the markdown to html to the output path `./README.html`.
     - [x] [ATX Headings](https://spec.commonmark.org/0.31.2/#atx-headings) `# foo` &rarr; `<h1>foo</h1>`
     - [x] [Setext Headings](https://spec.commonmark.org/0.31.2/#setext-heading) `foo\n===` &rarr; `<h1>foo</h1>`
     - [x] [Indented code blocks](https://spec.commonmark.org/0.31.2/#indented-code-blocks)*
-    - [ ] [Fenced code blocks](https://spec.commonmark.org/0.31.2/#fenced-code-blocks)
+    - [x] [Fenced code blocks](https://spec.commonmark.org/0.31.2/#fenced-code-blocks)
     - [ ] [HTML blocks](https://spec.commonmark.org/0.31.2/#html-blocks)
     - [ ] [Link reference definitions](https://spec.commonmark.org/0.31.2/#link-reference-definitions)
     - [ ] [Paragraphs](https://spec.commonmark.org/0.31.2/#paragraphs)

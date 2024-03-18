@@ -53,6 +53,19 @@ const indentedCodeBlock = (src) => {
     return null;
 }
 
+const fencedCodeBlock = (src) => {
+    const match = src.match(regex.fencedCodeBlock);
+    if (match) {
+        const type = 'fenced_code_block';
+        const raw = match[0];
+        const precedingIndentation = match[1];
+        let text = match[4];
+        text = text.split("\n").map((line) => line.replace(precedingIndentation, '')).join('\n');
+        return { raw, type, text };
+    }
+    return null;
+}
+
 const textBlock = (src) => {
     const reserved = ['>', '#'];
     if (reserved.includes(src[0])) return null;
@@ -116,6 +129,7 @@ export default {
     thematicBreak,
     heading,
     indentedCodeBlock,
+    fencedCodeBlock,
     textBlock,
     textInline,
     bold,

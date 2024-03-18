@@ -53,6 +53,14 @@ const parse = (tokens) => {
                 out += tag("pre", true);
             }
 
+            if (token.type === "fenced_code_block") {
+                out += tag("pre");
+                out += tag("code");
+                out += token.text;
+                out += tag("code", true);
+                out += tag("pre", true);
+            }
+
             if (token.type === "text_block") {
                 out += '<p>';
                 _recursive_parse(token.children);

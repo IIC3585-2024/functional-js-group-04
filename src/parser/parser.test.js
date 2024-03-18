@@ -25,6 +25,12 @@ describe("parser", () => {
   
       expect(parse(tokens)).toMatchSnapshot();
     });
+
+    test("fenced code block", () => {
+      const tokens = tokenize("```javascript\nfunction foo(x) {\n  return 3\n}\n```");
+  
+      expect(parse(tokens)).toMatchSnapshot();
+    });
   
     test("text blocks with inline content", () => {
       const tokens = tokenize("foo *bar* **baz** ***qux***");
