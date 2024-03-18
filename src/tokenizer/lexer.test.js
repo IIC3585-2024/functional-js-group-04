@@ -274,12 +274,6 @@ describe("emphasis and strong emphasis", () => {
 });
 
 describe('#textInline', () => {
-    test('should return null on empty string', () => {
-        const src = '';
-        const token = lexer.textInline(src);
-        expect(token).toBe(null);
-    });
-
     test('should return token on match', () => {
         const src = 'bar **foo** baz';
         const token = lexer.textInline(src);

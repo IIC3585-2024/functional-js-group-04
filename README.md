@@ -33,7 +33,8 @@ Transpile the markdown to html to the output path `./README.html`.
 2. Parser(tokens) -> html
 
 ## Roadmap
-
+- [x] Naive support
+  - [x] Support for italic, bold and italic + bold
 - [ ] Support for [common mark spec](https://spec.commonmark.org/0.31.2)
   - [ ] [Leaf blocks](https://spec.commonmark.org/0.31.2/#leaf-blocks)
     - [x] [Thematic breaks](https://spec.commonmark.org/0.31.2/#thematic-breaks)

@@ -131,6 +131,17 @@ exports[`indented code block should return the indented_code_block token 1`] = `
 exports[`paragraph should return one token on multiple lines 1`] = `
 [
   {
+    "children": [
+      {
+        "raw": "foo
+bar
+baz",
+        "text": "foo
+bar
+baz",
+        "type": "text_inline",
+      },
+    ],
     "raw": "foo
 bar
 baz
@@ -146,6 +157,13 @@ baz",
 exports[`paragraph should return the paragraph token 1`] = `
 [
   {
+    "children": [
+      {
+        "raw": "foo",
+        "text": "foo",
+        "type": "text_inline",
+      },
+    ],
     "raw": "foo
 ",
     "text": "foo",

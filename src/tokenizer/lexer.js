@@ -89,16 +89,18 @@ const blankLine = (src) => {
 
 const textInline = (src) => {
     const reserved = ['[', '![', '*', '_'];
+
     if (reserved.includes(src[0])) return null;
 
-    const match = src.match(regex.textInline);
-    if (match) {
-        const type = 'text_inline';
-        const raw = match[0];
-        const text = match[1];
-        return { raw, type, text };
+    let text = ""
+    for (const char of src){
+        if (reserved.includes(char)) break;
+        text += char;
     }
-    return null;
+
+    const type = 'text_inline';
+    const raw = text;
+    return { raw, type, text };
 }
 
 const bold = (src) => {
