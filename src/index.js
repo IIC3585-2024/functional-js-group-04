@@ -42,7 +42,12 @@ const action_message = {
     'compile': 'Compiling',
 }
 
-console.log(`${action_message[action]} file from ${input_path} with ${style_path}`);
+const style_message = {
+    'tokenize': '',
+    'compile': ` with style from ${style_path}`,
+}
+
+console.log(`${action_message[action]} file from ${input_path}${style_message[action]}`);
 
 switch (action) {
     case 'tokenize':
