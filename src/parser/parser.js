@@ -6,14 +6,12 @@ const parse = (tokens) => {
 
     out += suffix();
 
-    function style() {
-        return `
-            <link rel="stylesheet" type="text/css" href="style.css">
-        `
+    function styleLink() {
+        return `<link rel="stylesheet" type="text/css" href="style.css">`
     }
 
     function prefix() {
-        return `<!DOCTYPE html>${style()}<html><head><title>Markdown</title></head><body>`;
+        return `<!DOCTYPE html>${styleLink()}<html><head><title>Markdown</title></head><body>`;
     }
 
     function suffix() {
