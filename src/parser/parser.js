@@ -8,7 +8,6 @@ const parse = (tokens) => {
 
     function style() {
         return `
-            <link href="https://db.onlinewebfonts.com/c/e5f6b1efe7d19d27f75355bd6dba4b65?family=Monospace+821+W02+Roman" rel="stylesheet">
             <link rel="stylesheet" type="text/css" href="style.css">
         `
     }
