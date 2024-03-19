@@ -309,6 +309,26 @@ describe('#italic', () => {
     });
 })
 
+describe('#link', () => {
+    test('should return link token', () => {
+        const src = '[foo](bar)';
+        const token = lexer.link(src);
+        expect(token).toEqual({ raw: "[foo](bar)", type: 'link', text: 'foo', href: 'bar', title: null});
+    });
+
+    test('should return empty link token', () => {
+        const src = '[]()';    
+        const token = lexer.link(src);
+        expect(token).toEqual({ raw: "[]()", type: 'link', text: '', href: '', title: null});
+    });
+
+    test('should return link token whith title', () => {
+        const src = '[foo](bar "title")';
+        const token = lexer.link(src);
+        expect(token).toEqual({ raw: "[foo](bar \"title\")", type: 'link', text: 'foo', href: 'bar', title: 'title' });
+    });
+})
+
 describe('#blockquote', () => {
     test('should return blockquote token', () => {
         const src = '> foo\n>bar\n>baz';

@@ -125,6 +125,19 @@ const italic = (src) => {
     return null;
 }
 
+const link = (src) => {
+    const match = src.match(regex.link);
+    if (match) {
+        const type = 'link';
+        const raw = match[0];
+        const text = match[1];
+        const href = match[2];
+        const title = match[4]||null;
+        return { raw, type, text, href, title };
+    }
+    return null;
+}
+
 const blockquote = (src) => {
     const match = src.match(regex.blockquote);
     if (match) {
@@ -200,4 +213,5 @@ export default {
     bold,
     italic,
     blockquote,
+    link,
 };

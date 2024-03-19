@@ -32,6 +32,7 @@ const regex = {
     // Inline
     bold: /^\*\*([\w\W]*?)\*\*/,
     italic: /^\*(.*?)\*/,
+    link: /\[(.*?)\]\((\S*?)\s*("(.*?)")?\)/,
 }
 
 export default regex;
