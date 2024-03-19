@@ -44,9 +44,8 @@ h6 {
     margin: 1.5rem 0;
 }
 
-code {
+pre code {
     font-family: 'Courier New', Courier, monospace;
-
     font-size: 1rem;
     min-height: 4rem;
     display: block;
