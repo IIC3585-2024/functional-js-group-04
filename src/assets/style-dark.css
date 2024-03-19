@@ -1,9 +1,9 @@
 /* Define color variables */
 :root {
-    --primary-color: #343434; /* Dark */
-    --light-primary-color: #34343430; /* Light dark */
-    --light-light-primary-color: #34343410; /* Light light dark */
-    --secondary-color: #f3f3f3; /* Light */
+    --primary-color: #e0e0e0; /* Dark */
+    --light-primary-color: #e0e0e040; /* Light dark */
+    --light-light-primary-color: #e0e0e010; /* Light light dark */
+    --secondary-color: #212127; /* Light */
   }
   
 

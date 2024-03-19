@@ -43,9 +43,9 @@ function compiler() {
         return this;
     }
 
-    function style(out_path) {
+    function style(out_path, st_path) {
         try {
-            const styleContent = readFileSync(join('src', 'assets', 'style.css'), 'utf-8');
+            const styleContent = readFileSync(join('src', 'assets', st_path), 'utf-8');
             const cssFilePath = join(dirname(out_path), 'style.css');
             writeFileSync(cssFilePath, styleContent);
         } catch (error) {
