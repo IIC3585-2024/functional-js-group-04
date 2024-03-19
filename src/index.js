@@ -46,10 +46,10 @@ console.log(`${action_message[action]} file from ${input_path} with ${style_path
 
 switch (action) {
     case 'tokenize':
-        compiler().read(input_path).tokenize().write(output_path).style(output_path);
+        compiler().read(input_path).tokenize().write(output_path);
         break;
     case 'compile':
-        compiler().read(input_path).tokenize().parse().style(output_path, style_path).write(output_path);
+        compiler().read(input_path).tokenize().style(style_path).parse().write(output_path);
         break;
     default:
         console.error('Invalid action');

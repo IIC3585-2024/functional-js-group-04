@@ -5,14 +5,24 @@ import _parse from "../parser/parser.js";
 
 function compiler() {
     let _output = null;
+    let _style = null;
 
     function tokenize() {
         _output = _tokenize(_output);
         return this
     }
 
+    function style(st_path) {
+        try {
+            _style = readFileSync(join('src', 'assets', st_path), 'utf-8');
+        } catch (error) {
+            console.error(`Error writing style file to disk: ${error}`);
+        }
+        return this;
+    }
+
     function parse() {
-        _output = _parse(_output);
+        _output = _parse(_output, _style);
         return this;
     }
 
@@ -39,17 +49,6 @@ function compiler() {
             }    
         } catch (error) {
             console.error(`Error writing file to disk: ${error}`);
-        }
-        return this;
-    }
-
-    function style(out_path, st_path) {
-        try {
-            const styleContent = readFileSync(join('src', 'assets', st_path), 'utf-8');
-            const cssFilePath = join(dirname(out_path), 'style.css');
-            writeFileSync(cssFilePath, styleContent);
-        } catch (error) {
-            console.error(`Error writing style file to disk: ${error}`);
         }
         return this;
     }
