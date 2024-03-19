@@ -1,4 +1,5 @@
 import { readFileSync, writeFileSync } from 'fs';
+import { join, dirname } from 'path';
 import _tokenize from "../tokenizer/tokenizer.js";
 import _parse from "../parser/parser.js";
 
@@ -42,6 +43,17 @@ function compiler() {
         return this;
     }
 
+    function style(out_path) {
+        try {
+            const styleContent = readFileSync(join('src', 'assets', 'style.css'), 'utf-8');
+            const cssFilePath = join(dirname(out_path), 'style.css');
+            writeFileSync(cssFilePath, styleContent);
+        } catch (error) {
+            console.error(`Error writing style file to disk: ${error}`);
+        }
+        return this;
+    }
+
     function read(in_path) {
         try {
             _output = readFileSync(in_path, 'utf8');
@@ -59,6 +71,7 @@ function compiler() {
         output,
         read,
         write,
+        style,
     }
 }
 

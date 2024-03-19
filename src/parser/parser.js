@@ -8,15 +8,8 @@ const parse = (tokens) => {
 
     function style() {
         return `
-        <style>
-            blockquote {
-                margin: 1.5em 40px;
-                padding: 0 1em;
-                border-left: 5px solid #ddd;
-                background-color: #f9f9f9;
-                padding: 0.5em 10px;
-              }
-        </style>
+            <link href="https://db.onlinewebfonts.com/c/e5f6b1efe7d19d27f75355bd6dba4b65?family=Monospace+821+W02+Roman" rel="stylesheet">
+            <link rel="stylesheet" type="text/css" href="style.css">
         `
     }
 

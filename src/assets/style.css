@@ -1,0 +1,70 @@
+/* Define color variables */
+:root {
+    --primary-color: #343434; /* Dark */
+    --light-primary-color: #34343430; /* Light dark */
+    --light-light-primary-color: #34343410; /* Light light dark */
+    --secondary-color: #f3f3f3; /* Light */
+  }
+  
+
+body {
+    font-family: "Helvetica", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 100;
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    padding: 1rem 2rem;
+}
+
+h1 {
+    border-bottom: 1px solid var(--light-primary-color);
+    padding-bottom: 0.5rem;
+    margin: 3.5rem 0;
+}
+
+h2 {
+    border-bottom: 1px solid var(--light-primary-color);
+    padding-bottom: 0.5rem;
+    margin: 3rem 0;
+}
+
+h3 {
+    margin: 2.5rem 0;
+}
+
+h4 {
+    margin: 2rem 0;
+}
+
+h5 {
+    margin: 2rem 0;
+}
+
+h6 {
+    margin: 1.5rem 0;
+}
+
+code {
+    font-family: "Monospace 821 W02 Roman";
+    font-size: 1rem;
+    color: var(--primary-color);
+    background-color: var(--light-light-primary-color);
+    display: block;
+    padding: 1rem;
+    border-radius: 5px;
+    min-height: 4rem;
+
+}
+
+blockquote {
+    margin: 1.5em 0px;
+    padding: 0 1em;
+    border-left: 5px solid #ddd;
+    background-color: var(--light-light-primary-color);
+    padding: 0.5em 10px;
+}
+
+hr {
+    border-top: 1px solid var(--light-primary-color);
+    border-left: 0px solid var(--light-primary-color);
+}
