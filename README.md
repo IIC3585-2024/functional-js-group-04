@@ -61,4 +61,29 @@ Transpile the markdown to html to the output path `./README.html`.
     - [ ] [Soft line breaks](https://spec.commonmark.org/0.31.2/#soft-line-breaks)
     - [ ] [Textual content](https://spec.commonmark.org/0.31.2/#textual-content)
 
+- [ ] [Support style](https://www.markdownguide.org/cheat-sheet/)
+  - [ ] Basic syntax
+    - [x] Headings
+    - [x] Bold
+    - [x] Italic
+    - [ ] Blockquote
+    - [ ] Ordered list
+    - [ ] Unordered list
+    - [ ] Code
+    - [x] Horizontal rule
+    - [ ] Link
+    - [ ] Image
+  - Extended syntax
+    - [ ] Table
+    - [x] Fenced code block
+    - [ ] Footnote
+    - [ ] Heading ID
+    - [ ] Definition List
+    - [ ] Strikethrough
+    - [ ] Task list
+    - [ ] Emoji
+    - [ ] Highlight
+    - [ ] Subscript
+    - [ ] Superscript
+
 *The indented code blocks interrupt paragraphs in this implementation.
