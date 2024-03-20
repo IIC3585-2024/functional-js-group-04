@@ -1,28 +1,24 @@
 import { readFileSync, writeFileSync } from 'fs';
-import { join, dirname } from 'path';
 import _tokenize from "../tokenizer/tokenizer.js";
 import _parse from "../parser/parser.js";
+import _style from "../style/style.js";
 
 function compiler() {
     let _output = null;
-    let _style = null;
+    let _stylesheet = null;
 
     function tokenize() {
         _output = _tokenize(_output);
         return this
     }
 
-    function style(st_path) {
-        try {
-            _style = readFileSync(join('src', 'assets', st_path), 'utf-8');
-        } catch (error) {
-            console.error(`Error writing style file to disk: ${error}`);
-        }
+    function style(file_path) {
+        _stylesheet = _style(file_path)
         return this;
     }
 
     function parse() {
-        _output = _parse(_output, _style);
+        _output = _parse(_output, _stylesheet);
         return this;
     }
 
@@ -46,9 +42,9 @@ function compiler() {
                 writeFileSync(out_path, JSON.stringify(_output, null, 2));
             } else {
                 writeFileSync(out_path, _output);
-            }    
+            }
         } catch (error) {
-            console.error(`Error writing file to disk: ${error}`);
+            throw new Error(`Error writing file to disk: ${error}`);
         }
         return this;
     }

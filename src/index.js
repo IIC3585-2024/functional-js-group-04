@@ -1,9 +1,11 @@
-import { readFile, writeFile, existsSync } from 'fs';
-import { join } from 'path';
+import { existsSync } from 'fs';
 import compiler from './compiler/compiler.js';
 
+// Defaults
 let action = "compile";
-let style_path = "style.css";
+let custom_style = false;
+let style_path = "src/assets/themes/light.css"
+let theme = "light";
 
 if (process.argv.length < 4) {
     console.error('Usage: node src/index.js <input_file> <output_file> [--action <action>] [--style <style_file>]');
@@ -18,11 +20,24 @@ process.argv.slice(4).forEach((arg, index, array) => {
         action = array[index + 1];
     }
     if (arg === '--style') {
+        custom_style = true;
         style_path = array[index + 1];
+    }
+
+    if (arg === '--theme') {
+        theme = array[index + 1];
+
+        if (theme === 'light') {
+            style_path = 'src/assets/themes/light.css';
+        }
+
+        if (theme === 'dark') {
+            style_path = 'src/assets/themes/dark.css';
+        }
     }
 });
 
-if (!input_path) {
+if (!existsSync(input_path)) {
     console.error('Please provide an input file');
     process.exit(1);
 }
@@ -32,7 +47,7 @@ if (!output_path) {
     process.exit(1);
 }
 
-if (!existsSync(join('src', 'assets', style_path))) {
+if (!existsSync(style_path)) {
     console.error('Please provide an existing style file');
     process.exit(1);
 }
@@ -47,7 +62,17 @@ const style_message = {
     'compile': ` with style from ${style_path}`,
 }
 
-console.log(`${action_message[action]} file from ${input_path}${style_message[action]}`);
+const theme_emojis = {
+    'light': 'light 🌞',
+    'dark': 'dark 🌚',
+}
+
+const theme_message = {
+    'tokenize': '',
+    'compile': ` with theme ${theme_emojis[theme]}`,
+}
+
+console.log(`${action_message[action]} file from ${input_path}${custom_style ? style_message[action] : theme_message[action] }`);
 
 switch (action) {
     case 'tokenize':
