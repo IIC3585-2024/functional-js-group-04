@@ -56,7 +56,7 @@ exports[`parser spec with link 1`] = `
                 padding: 0.5em 10px;
               }
         </style>
-        <html><head><title>Markdown</title></head><body><p><a href="bar" title="null">foo</a></p></body></html>"
+        <html><head><title>Markdown</title></head><body><p><a href="bar" title="null"><strong>foo</strong></a></p></body></html>"
 `;
 
 exports[`parser spec with paragraphs 1`] = `

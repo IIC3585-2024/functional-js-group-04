@@ -39,7 +39,7 @@ describe("parser", () => {
     });
 
     test("link", () => {
-      const tokens = tokenize("[foo](bar)");
+      const tokens = tokenize("[**foo**](bar)");
   
       expect(parse(tokens)).toMatchSnapshot();
     });

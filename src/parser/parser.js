@@ -88,7 +88,9 @@ const parse = (tokens) => {
             }
 
             if (token.type === "link") {
-                out += `<a href="${token.href}" title="${token.title}">${token.text}</a>`;
+                out += `<a href="${token.href}" title="${token.title}">`;
+                _recursive_parse(token.children);
+                out += '</a>';
             }
 
             if (token.type === "blockquote") {
