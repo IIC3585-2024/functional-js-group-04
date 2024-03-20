@@ -1,5 +1,14 @@
 import _tag from "../helpers/index.js";
 
+const prefix = (sty) => {
+    return `<!DOCTYPE html><style>${sty}</style><html><head><title>Markdown</title></head><body>`;
+}
+
+const suffix = () => {
+    return `</body></html>`;
+}
+
+//TODO: create currying for the tag function
 const typeHandler = {
     thematic_break: () => _tag('hr'),
     heading: (token) => _tag(`h${token.level}`) + _recursive_parse(token.children) + _tag(`h${token.level}`, true),
@@ -14,29 +23,15 @@ const typeHandler = {
 }
 
 const _recursive_parse = (tokens) => {
-    // return tokens.map((token) => typeHandler[token.type](token)).join('');
-    return tokens.map((token) => typeHandler[token.type](token)).reduce((acc, curr) => acc + curr, '');
+    return tokens.map((token) => typeHandler[token.type](token)).join('');
 }
 
-
 const parse = (tokens, style) => {
-    let out = '';
+    const sections = [prefix, _recursive_parse, suffix]
+    
+    const params = [style, tokens, false]
 
-    out += prefix();
-
-    out += _recursive_parse(tokens);
-
-    out += suffix();
-
-    function prefix() {
-        return `<!DOCTYPE html><style>${style}</style><html><head><title>Markdown</title></head><body>`;
-    }
-
-    function suffix() {
-        return '</body></html>';
-    }
-
-    return out;
+    return sections.reduce((out, func, index) => out + func(params[index]), '');
 }
 
 export default parse;
