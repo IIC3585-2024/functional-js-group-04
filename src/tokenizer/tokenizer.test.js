@@ -62,7 +62,7 @@ describe("blank line", () => {
 
 describe("link", () => {
     test('should return the link token', () => {
-        const src = '[foo](bar)';
+        const src = '[**foo**](bar "**title**")';
         const tokens = tokenize(src);
         expect(tokens).toMatchSnapshot();
     });

@@ -135,20 +135,27 @@ exports[`link should return the link token 1`] = `
       {
         "children": [
           {
-            "raw": "foo",
+            "children": [
+              {
+                "raw": "foo",
+                "text": "foo",
+                "type": "text_inline",
+              },
+            ],
+            "raw": "**foo**",
             "text": "foo",
-            "type": "text_inline",
+            "type": "bold",
           },
         ],
         "href": "bar",
-        "raw": "[foo](bar)",
-        "text": "foo",
-        "title": null,
+        "raw": "[**foo**](bar "**title**")",
+        "text": "**foo**",
+        "title": "**title**",
         "type": "link",
       },
     ],
-    "raw": "[foo](bar)",
-    "text": "[foo](bar)",
+    "raw": "[**foo**](bar "**title**")",
+    "text": "[**foo**](bar "**title**")",
     "type": "paragraph",
   },
 ]
