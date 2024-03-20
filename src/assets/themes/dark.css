@@ -1,0 +1,72 @@
+/* Define color variables */
+:root {
+    --primary-color: #e0e0e0; /* Dark */
+    --light-primary-color: #e0e0e040; /* Light dark */
+    --light-light-primary-color: #e0e0e010; /* Light light dark */
+    --secondary-color: #212127; /* Light */
+  }
+
+
+body {
+    font-family: "Helvetica", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 100;
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    padding: 1rem 2rem;
+}
+
+h1 {
+    border-bottom: 1px solid var(--light-primary-color);
+    padding-bottom: 0.5rem;
+    margin: 3.5rem 0;
+}
+
+h2 {
+    border-bottom: 1px solid var(--light-primary-color);
+    padding-bottom: 0.5rem;
+    margin: 3rem 0;
+}
+
+h3 {
+    margin: 2.5rem 0;
+}
+
+h4 {
+    margin: 2rem 0;
+}
+
+h5 {
+    margin: 2rem 0;
+}
+
+h6 {
+    margin: 1.5rem 0;
+}
+
+pre code {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    min-height: 4rem;
+    display: block;
+    padding: 1rem;
+    border-radius: 5px;
+    color: var(--primary-color);
+    background-color: var(--light-light-primary-color);
+
+}
+
+blockquote {
+    margin: 1.5em 0px;
+    padding: 0 1em;
+    border-left: 5px solid var(--light-primary-color);
+    background-color: var(--light-light-primary-color);
+    padding: 0.5em 10px;
+}
+
+hr {
+    border-top: 1px solid var(--light-primary-color);
+    border-bottom: 0px solid var(--light-primary-color);
+    border-left: 0px solid var(--light-primary-color);
+    border-right: 0px solid var(--light-primary-color);
+}

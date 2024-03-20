@@ -1,4 +1,4 @@
-const parse = (tokens) => {
+const parse = (tokens, style) => {
     let out = '';
     out += prefix();
 
@@ -6,22 +6,8 @@ const parse = (tokens) => {
 
     out += suffix();
 
-    function style() {
-        return `
-        <style>
-            blockquote {
-                margin: 1.5em 40px;
-                padding: 0 1em;
-                border-left: 5px solid #ddd;
-                background-color: #f9f9f9;
-                padding: 0.5em 10px;
-              }
-        </style>
-        `
-    }
-
     function prefix() {
-        return `<!DOCTYPE html>${style()}<html><head><title>Markdown</title></head><body>`;
+        return `<!DOCTYPE html><style>${style}</style><html><head><title>Markdown</title></head><body>`;
     }
 
     function suffix() {
