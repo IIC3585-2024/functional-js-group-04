@@ -311,9 +311,9 @@ describe('#italic', () => {
 
 describe('#link', () => {
     test('should return link token', () => {
-        const src = '[foo](bar)';
+        const src = '[foo]    (bar)';
         const token = lexer.link(src);
-        expect(token).toEqual({ raw: "[foo](bar)", type: 'link', text: 'foo', href: 'bar', title: null});
+        expect(token).toEqual({ raw: "[foo]    (bar)", type: 'link', text: 'foo', href: 'bar', title: null });
     });
 
     test('should return empty link token', () => {
@@ -326,6 +326,42 @@ describe('#link', () => {
         const src = '[foo](bar "title")';
         const token = lexer.link(src);
         expect(token).toEqual({ raw: "[foo](bar \"title\")", type: 'link', text: 'foo', href: 'bar', title: 'title' });
+    });
+
+    test('should return link token when <> is used', () => {
+        const src = '[foo](<bar>)';
+        const token = lexer.link(src);
+        expect(token).toEqual({ raw: "[foo](<bar>)", type: 'link', text: 'foo', href: 'bar', title: null });
+    });
+
+    test('should return link token when bold is used in and out', () => {
+        const src = '*[foo*](bar)';
+        const token = lexer.link(src);
+        expect(token).toEqual({ raw: "[foo*](bar)", type: 'link', text: 'foo*', href: 'bar', title: null });
+    });
+
+    test('should return null when href use spaces', () => {
+        const src = '[foo](bar baz)';
+        const token = lexer.link(src);
+        expect(token).toBe(null);
+    });
+
+    test('should return null when href starts whit <', () => {
+        const src = '[foo](bar>)';
+        const token = lexer.link(src);
+        expect(token).toBe(null);
+    });
+
+    test('should return null if href has unbalanced parenthesis', () => {
+        const src = '[foo](bar(baz)';
+        const token = lexer.link(src);
+        expect(token).toBe(null);
+    });
+
+    test('should return link token with parenthesis delimiter for titles', () => {
+        const src = '[foo](bar (baz))';
+        const token = lexer.link(src);
+        expect(token).toEqual({ raw: "[foo](bar (baz))", type: 'link', text: 'foo', href: 'bar', title: 'baz' });
     });
 })
 
