@@ -111,7 +111,7 @@ const codeSpan = (src) => {
         let text = match[2];
         text = text.replace(/\n/g, ' ');
 
-        if (text.startsWith(' ') && text.endsWith(' ') && text.trim() !== '') {
+        if (text.startsWith(' ') && text.endsWith(' ') && text.trim() !== '' && text !== '  ') {
             text = text.slice(1, -1);
         }
         return { raw, type, text };
