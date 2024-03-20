@@ -60,6 +60,12 @@ const parse = (tokens, style) => {
             if (token.type === "text_inline") {
                 out += token.text;
             }
+
+            if (token.type === "code_span") {
+                out += tag("code");
+                out += token.text;
+                out += tag("code", true);
+            }
     
             if (token.type === "bold") {
                 out += tag("strong");

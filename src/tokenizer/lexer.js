@@ -103,6 +103,22 @@ const textInline = (src) => {
     return { raw, type, text };
 }
 
+const codeSpan = (src) => {
+    const match = src.match(regex.codeSpan);
+    if (match) {
+        const type = 'code_span';
+        const raw = match[0];
+        let text = match[2];
+        text = text.replace(/\n/g, ' ');
+
+        if (text.startsWith(' ') && text.endsWith(' ') && text.trim() !== '') {
+            text = text.slice(1, -1);
+        }
+        return { raw, type, text };
+    }
+    return null;
+}
+
 const bold = (src) => {
     const match = src.match(regex.bold);
     if (match) {
@@ -197,6 +213,7 @@ export default {
     leftFlankingDelimiterRun,
     rightFlankingDelimiterRun,
     textInline,
+    codeSpan,
     bold,
     italic,
     blockquote,

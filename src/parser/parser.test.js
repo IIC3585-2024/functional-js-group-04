@@ -37,5 +37,11 @@ describe("parser", () => {
   
       expect(parse(tokens)).toMatchSnapshot();
     });
+
+    test("code span", () => {
+      const tokens = tokenize("`` foo `bar` baz ``");
+
+      expect(parse(tokens)).toMatchSnapshot();
+    });
   });
 });

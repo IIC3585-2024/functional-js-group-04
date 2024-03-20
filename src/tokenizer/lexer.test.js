@@ -309,6 +309,38 @@ describe('#italic', () => {
     });
 })
 
+describe('#codeSpan', () => {
+    test('should return code span token', () => {
+        const src = '`foo`';
+        const token = lexer.codeSpan(src);
+        expect(token).toEqual({ raw: "`foo`", type: 'code_span', text: 'foo' });
+    });
+
+    test('should return code span token with spaces', () => {
+        const src = '` foo `';
+        const token = lexer.codeSpan(src);
+        expect(token).toEqual({ raw: "` foo `", type: 'code_span', text: 'foo' });
+    });
+
+    test('should return code span token with newline', () => {
+        const src = '`foo\nbar`';
+        const token = lexer.codeSpan(src);
+        expect(token).toEqual({ raw: "`foo\nbar`", type: 'code_span', text: 'foo bar' });
+    });
+
+    test('should return code span token with more than one backtick', () => {
+        const src = '```foo```';
+        const token = lexer.codeSpan(src);
+        expect(token).toEqual({ raw: "```foo```", type: 'code_span', text: 'foo' });
+    });
+
+    test('should return code span token with backticks inside', () => {
+        const src = '`` ` ``'
+        const token = lexer.codeSpan(src);
+        expect(token).toEqual({ raw: "`` ` ``", type: 'code_span', text: '`' });
+    });
+});
+
 describe('#blockquote', () => {
     test('should return blockquote token', () => {
         const src = '> foo\n>bar\n>baz';

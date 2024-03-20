@@ -59,3 +59,11 @@ describe("blank line", () => {
         expect(tokens).toMatchSnapshot();
     });
 })
+
+describe("code span", () => {
+    test('should return the code_span token', () => {
+        const src = '`` foo `bar` baz ``';
+        const tokens = tokenize(src);
+        expect(tokens).toMatchSnapshot();
+    });
+});
