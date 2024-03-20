@@ -4,6 +4,10 @@ const prefix = (sty) => {
     return `<!DOCTYPE html><style>${sty}</style><html><head><title>Markdown</title></head><body>`;
 }
 
+const _recursive_parse = (tokens) => {
+    return tokens.map((token) => typeHandler[token.type](token)).join('');
+}
+
 const suffix = () => {
     return `</body></html>`;
 }
@@ -20,10 +24,6 @@ const typeHandler = {
     bold: (token) => _tag("strong") + _recursive_parse(token.children) + _tag("strong", true),
     italic: (token) => _tag("em") + _recursive_parse(token.children) + _tag("em", true),
     blockquote: (token) => _tag("blockquote") + _recursive_parse(token.children) + _tag("blockquote", true),
-}
-
-const _recursive_parse = (tokens) => {
-    return tokens.map((token) => typeHandler[token.type](token)).join('');
 }
 
 const parse = (tokens, style) => {
