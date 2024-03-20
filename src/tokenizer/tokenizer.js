@@ -84,6 +84,13 @@ const tokenizeInline = (src) => {
             continue
         }
 
+        if (token = lexer.link(src)) {
+            src = src.substring(token.raw.length);
+            token.children = tokenizeInline(token.text);
+            tokens.push(token);
+            continue
+        }
+
         // Throws error if the src is not empty and no token is matched
         if (src) {
             throw new Error('Infinite loop', src);

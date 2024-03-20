@@ -60,6 +60,9 @@ mollit anim id est laborum.
 
 ### Blank lines
 
+### Links
+[foo](bar "title")
+
 ###### 1
 
 

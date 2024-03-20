@@ -128,6 +128,32 @@ exports[`indented code block should return the indented_code_block token 1`] = `
 ]
 `;
 
+exports[`link should return the link token 1`] = `
+[
+  {
+    "children": [
+      {
+        "children": [
+          {
+            "raw": "foo",
+            "text": "foo",
+            "type": "text_inline",
+          },
+        ],
+        "href": "bar",
+        "raw": "[foo](bar)",
+        "text": "foo",
+        "title": null,
+        "type": "link",
+      },
+    ],
+    "raw": "[foo](bar)",
+    "text": "[foo](bar)",
+    "type": "paragraph",
+  },
+]
+`;
+
 exports[`paragraph should return one token on multiple lines 1`] = `
 [
   {
