@@ -30,8 +30,8 @@ const regex = {
     blockquote: /^> {0,}(.*)(?:\n|$)/,
 
     // Inline
-    bold: /^\*\*([\w\W]*?)\*\*/,
-    italic: /^\*(.*?)\*/,
+    bold: /^\*\*([\w\W]*)\*\*/,
+    italic: /^\*(.*)\*/,
 }
 
 export default regex;

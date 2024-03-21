@@ -70,6 +70,20 @@ mollit anim id est laborum.
 
 # Naive support
 
+## Decoration
+
+### Bold
+
+Some **bold** text
+
+### Italic
+
+Some *italic* text
+
+### Combination of inlines
+
+Some ***bold and italic*** text
+
 # Bands
 
 ======

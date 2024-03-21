@@ -103,6 +103,13 @@ const textInline = (src) => {
     return { raw, type, text };
 }
 
+const charInline = (src) => {
+    const type = 'text_inline';
+    const raw = src[0];
+    const text = raw;
+    return { raw, type, text };
+}
+
 const bold = (src) => {
     const match = src.match(regex.bold);
     if (match) {
@@ -197,6 +204,7 @@ export default {
     leftFlankingDelimiterRun,
     rightFlankingDelimiterRun,
     textInline,
+    charInline,
     bold,
     italic,
     blockquote,
