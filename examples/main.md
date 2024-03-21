@@ -63,6 +63,9 @@ mollit anim id est laborum.
 ### Code Spans
 `` print("Hello ` World") ``
 
+### Links
+[Repositorio grupo 04](https://github.com/IIC3585-2024/functional-js-group-04 "Repositorio")
+
 ###### 1
 
 
@@ -72,6 +75,20 @@ mollit anim id est laborum.
 
 
 # Naive support
+
+## Decoration
+
+### Bold
+
+Some **bold** text
+
+### Italic
+
+Some *italic* text
+
+### Combination of inlines
+
+Some ***bold and italic*** text
 
 # Bands
 

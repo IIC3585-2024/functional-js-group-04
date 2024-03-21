@@ -43,5 +43,11 @@ describe("parser", () => {
 
       expect(parse(tokens)).toMatchSnapshot();
     });
+
+    test("link", () => {
+      const tokens = tokenize("[**foo**](bar)");
+  
+      expect(parse(tokens)).toMatchSnapshot();
+    });
   });
 });

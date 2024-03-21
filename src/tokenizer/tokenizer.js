@@ -60,6 +60,7 @@ const tokenizeBlocks = (src) => {
 
 const tokenizeInline = (src) => {
     const tokens = [];
+    let previousToken = null;
 
     while (src) {
         let token = null;
@@ -67,33 +68,60 @@ const tokenizeInline = (src) => {
         if (token = lexer.bold(src)) {
             src = src.substring(token.raw.length);
             token.children = tokenizeInline(token.text);
-            tokens.push(token);
-            continue
         }
 
-        if (token = lexer.italic(src)) {
+        else if (token = lexer.link(src)) {
             src = src.substring(token.raw.length);
             token.children = tokenizeInline(token.text);
-            tokens.push(token);
-            continue
         }
 
-        if (token = lexer.codeSpan(src)) {
+        else if (token = lexer.codeSpan(src)) {
             src = src.substring(token.raw.length);
-            tokens.push(token);
-            continue
         }
 
-        if (token = lexer.textInline(src)) {
+        else if (token = lexer.italic(src)) {
             src = src.substring(token.raw.length);
-            tokens.push(token);
-            continue
+            token.children = tokenizeInline(token.text);
+        }
+
+        else if (token = lexer.textInline(src)) {
+            src = src.substring(token.raw.length);
+
+            if (previousToken && previousToken.type === 'text_inline') {
+                previousToken.text += token.text;
+                previousToken.raw += token.raw;
+                continue
+            }
+        }
+
+        else if (token = lexer.charInline(src)) {
+            src = src.substring(token.raw.length);
+
+            if (previousToken && previousToken.type === 'text_inline') {
+                previousToken.text += token.text;
+                previousToken.raw += token.raw;
+                continue
+            }
+        }
+
+        else if (token = lexer.charInline(src)) {
+            src = src.substring(token.raw.length);
+
+            if (previousToken && previousToken.type === 'text_inline') {
+                previousToken.text += token.text;
+                previousToken.raw += token.raw;
+                continue
+            }
         }
 
         // Throws error if the src is not empty and no token is matched
-        if (src) {
+        else if (src) {
             throw new Error('Infinite loop', src);
         }
+
+        tokens.push(token);
+        previousToken = token;
+
     }
 
     return tokens;

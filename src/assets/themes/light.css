@@ -1,9 +1,12 @@
 /* Define color variables */
 :root {
     --primary-color: #343434; /* Dark */
+    --soft-primary-color: #34343499; /* Light dark */
     --light-primary-color: #34343430; /* Light dark */
     --light-light-primary-color: #34343410; /* Light light dark */
     --secondary-color: #f3f3f3; /* Light */
+    --reference-color: #5a9de5; /* Sky blue */
+    --highlight-color: #f1e8b2; /* Highlight */
   }
 
 
@@ -44,24 +47,26 @@ h6 {
     margin: 1.5rem 0;
 }
 
-pre code {
+code {
     font-family: 'Courier New', Courier, monospace;
     font-size: 1rem;
+    border-radius: 5px;
+    padding: 0.2rem 0.5rem;
+    background-color: var(--light-light-primary-color);
+}
+
+pre code {
     min-height: 4rem;
     display: block;
     padding: 1rem;
     border-radius: 5px;
-    color: var(--primary-color);
-    background-color: var(--light-light-primary-color);
-
 }
 
 blockquote {
     margin: 1.5em 0px;
-    padding: 0 1em;
+    padding: 0.5rem 1.2rem;
     border-left: 5px solid var(--light-primary-color);
     background-color: var(--light-light-primary-color);
-    padding: 0.5em 10px;
 }
 
 hr {
@@ -69,4 +74,51 @@ hr {
     border-bottom: 0px solid var(--light-primary-color);
     border-left: 0px solid var(--light-primary-color);
     border-right: 0px solid var(--light-primary-color);
+}
+
+a {
+    color: var(--reference-color);
+    transition: color 0.3s;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+ul {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+li {
+    margin: 0.5rem 0;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 2rem 0;
+    font-size: 1rem;
+}
+
+tr, th {
+    border-bottom: 1px solid var(--light-light-primary-color);
+}
+
+td, th {
+    padding: 1.2rem;
+    border-left: 1px solid var(--light-light-primary-color);
+}
+
+td:first-child, th:first-child {
+    border-left: 0px solid var(--light-light-primary-color);
+}
+
+tr:last-child {
+    border-bottom: 0px solid var(--light-light-primary-color);
+}
+
+mark {
+    color: var(--primary-color);
+    background-color: var(--highlight-color);
+    padding: 0.2rem 0.5rem;
 }
