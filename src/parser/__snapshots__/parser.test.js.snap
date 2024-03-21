@@ -19,4 +19,4 @@ bar
 baz</p></body></html>"
 `;
 
-exports[`parser spec with thematic break 1`] = `"<!DOCTYPE html><style>undefined</style><html><head><title>Markdown</title></head><body><hr/><hr/><hr/></body></html>"`;
+exports[`parser spec with thematic break 1`] = `"<!DOCTYPE html><style>undefined</style><html><head><title>Markdown</title></head><body><hr></hr><hr></hr><hr></hr></body></html>"`;
