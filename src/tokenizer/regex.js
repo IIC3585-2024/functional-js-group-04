@@ -32,7 +32,7 @@ const regex = {
     // Inline
     bold: /^\*\*([\w\W]*?)\*\*/,
     italic: /^\*(.*?)\*/,
-    codeSpan: /^(`+)(.*?)\1$/s,
+    codeSpan: /^(`+)(.*?)\1/s,
 }
 
 export default regex;

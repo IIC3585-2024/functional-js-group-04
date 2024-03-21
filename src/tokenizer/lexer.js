@@ -88,7 +88,7 @@ const blankLine = (src) => {
 }
 
 const textInline = (src) => {
-    const reserved = ['[', '![', '*', '_'];
+    const reserved = ['[', '![', '*', '_', '`'];
 
     if (reserved.includes(src[0])) return null;
 
