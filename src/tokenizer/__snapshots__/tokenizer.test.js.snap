@@ -10,6 +10,23 @@ exports[`blank line should return the blank_line token 1`] = `
 ]
 `;
 
+exports[`code span should return the code_span token 1`] = `
+[
+  {
+    "children": [
+      {
+        "raw": "\`\` foo \`bar\` baz \`\`",
+        "text": "foo \`bar\` baz",
+        "type": "code_span",
+      },
+    ],
+    "raw": "\`\` foo \`bar\` baz \`\`",
+    "text": "\`\` foo \`bar\` baz \`\`",
+    "type": "paragraph",
+  },
+]
+`;
+
 exports[`fenced code block should return the fenced_code_block token 1`] = `
 [
   {

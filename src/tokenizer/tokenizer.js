@@ -75,12 +75,26 @@ const tokenizeInline = (src) => {
             token.children = tokenizeInline(token.text);
         }
 
+        else if (token = lexer.codeSpan(src)) {
+            src = src.substring(token.raw.length);
+        }
+
         else if (token = lexer.italic(src)) {
             src = src.substring(token.raw.length);
             token.children = tokenizeInline(token.text);
         }
 
         else if (token = lexer.textInline(src)) {
+            src = src.substring(token.raw.length);
+
+            if (previousToken && previousToken.type === 'text_inline') {
+                previousToken.text += token.text;
+                previousToken.raw += token.raw;
+                continue
+            }
+        }
+
+        else if (token = lexer.charInline(src)) {
             src = src.substring(token.raw.length);
 
             if (previousToken && previousToken.type === 'text_inline') {

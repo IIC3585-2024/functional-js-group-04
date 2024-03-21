@@ -73,6 +73,12 @@ describe("inline text", () => {
         expect(tokens).toMatchSnapshot();
     });
 
+    test("code span", () => {
+        const src = '`` foo `bar` baz ``';
+        const tokens = tokenize(src);
+        expect(tokens).toMatchSnapshot();
+    });
+
     test("text_inline", () => {
         const src = 'foo';
         const tokens = tokenize(src);

@@ -88,7 +88,7 @@ const blankLine = (src) => {
 }
 
 const textInline = (src) => {
-    const reserved = ['[', '![', '*', '_'];
+    const reserved = ['[', '![', '*', '_', '`'];
 
     if (reserved.includes(src[0])) return null;
 
@@ -108,6 +108,22 @@ const charInline = (src) => {
     const raw = src[0];
     const text = raw;
     return { raw, type, text };
+}
+
+const codeSpan = (src) => {
+    const match = src.match(regex.codeSpan);
+    if (match) {
+        const type = 'code_span';
+        const raw = match[0];
+        let text = match[2];
+        text = text.replace(/\n/g, ' ');
+
+        if (text.startsWith(' ') && text.endsWith(' ') && text.trim() !== '' && text !== '  ') {
+            text = text.slice(1, -1);
+        }
+        return { raw, type, text };
+    }
+    return null;
 }
 
 const bold = (src) => {
@@ -236,6 +252,7 @@ export default {
     rightFlankingDelimiterRun,
     textInline,
     charInline,
+    codeSpan,
     bold,
     italic,
     blockquote,

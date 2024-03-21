@@ -60,6 +60,9 @@ mollit anim id est laborum.
 
 ### Blank lines
 
+### Code Spans
+`` print("Hello ` World") ``
+
 ### Links
 [Repositorio grupo 04](https://github.com/IIC3585-2024/functional-js-group-04 "Repositorio")
 
@@ -108,3 +111,4 @@ ___
 
 Artists
 =======
+

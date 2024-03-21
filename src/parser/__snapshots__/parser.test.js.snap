@@ -1,5 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`parser spec with code span 1`] = `"<!DOCTYPE html><style>undefined</style><html><head><title>Markdown</title></head><body><p><code>foo \`bar\` baz</code></p></body></html>"`;
+
 exports[`parser spec with fenced code block 1`] = `
 "<!DOCTYPE html><style>undefined</style><html><head><title>Markdown</title></head><body><pre><code>function foo(x) {
   return 3
