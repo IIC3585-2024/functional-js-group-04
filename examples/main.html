@@ -1,9 +1,11 @@
 <!DOCTYPE html><style>/* Define color variables */
 :root {
-    --primary-color: #e0e0e0; /* Dark */
-    --light-primary-color: #e0e0e040; /* Light dark */
-    --light-light-primary-color: #e0e0e010; /* Light light dark */
-    --secondary-color: #212127; /* Light */
+    --primary-color: #343434; /* Dark */
+    --soft-primary-color: #34343499; /* Light dark */
+    --light-primary-color: #34343430; /* Light dark */
+    --light-light-primary-color: #34343410; /* Light light dark */
+    --secondary-color: #f3f3f3; /* Light */
+    --reference-color: #5a9de5; /* Sky blue */
   }
 
 
@@ -44,24 +46,25 @@ h6 {
     margin: 1.5rem 0;
 }
 
-pre code {
+code {
     font-family: 'Courier New', Courier, monospace;
     font-size: 1rem;
+    border-radius: 5px;
+    background-color: var(--light-light-primary-color);
+}
+
+pre code {
     min-height: 4rem;
     display: block;
     padding: 1rem;
     border-radius: 5px;
-    color: var(--primary-color);
-    background-color: var(--light-light-primary-color);
-
 }
 
 blockquote {
     margin: 1.5em 0px;
-    padding: 0 1em;
+    padding: 0.5rem 1.2rem;
     border-left: 5px solid var(--light-primary-color);
     background-color: var(--light-light-primary-color);
-    padding: 0.5em 10px;
 }
 
 hr {
@@ -69,6 +72,24 @@ hr {
     border-bottom: 0px solid var(--light-primary-color);
     border-left: 0px solid var(--light-primary-color);
     border-right: 0px solid var(--light-primary-color);
+}
+
+a {
+    color: var(--reference-color);
+    transition: color 0.3s;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+ul {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+li {
+    margin: 0.5rem 0;
 }</style><html><head><title>Markdown</title></head><body><h1>Common mark spec</h1><h2>Leaf blocks</h2><h3>Headings</h3><h4>ATX headings</h4><h1>Heading 1</h1><h2>Heading 2</h2><h3>Heading 3</h3><h4>Heading 4</h4><h5>Heading 5</h5><h6>Heading 6</h6><h4>Setext headings</h4><h1>Heading 1</h1><h2>Heading 2</h2><h3>Indented code blocks</h3><pre><code>if (indented) {
    code();
 }</code></pre><h3>Fenced code blocks</h3><pre><code>function foo(x) {
@@ -81,4 +102,4 @@ mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipis
 dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
 ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
 fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-mollit anim id est laborum.</p><h3>Blank lines</h3><h6>1</h6><h6>6</h6><h1>Naive support</h1><h1>Bands</h1><hr></hr><h2>The Who</h2><p>Who are you? <strong>bold</strong> who!.</p><h2>Foo Fighters</h2><p>Learning to walk again</p><hr></hr><hr></hr><hr></hr><hr></hr><h1>Artists</h1></body></html>
+mollit anim id est laborum.</p><h3>Blank lines</h3><h6>1</h6><h6>6</h6><h1>Naive support</h1><h2>Decoration</h2><h3>Bold</h3><p>Some <strong>bold</strong> text</p><h3>Italic</h3><p>Some <em>italic</em> text</p><h3>Combination of inlines</h3><p>Some <strong><em>bold and italic</em></strong> text</p><h1>Bands</h1><hr></hr><h2>The Who</h2><p>Who are you? <strong>bold</strong> who!.</p><h2>Foo Fighters</h2><p>Learning to walk again</p><hr></hr><hr></hr><hr></hr><hr></hr><h1>Artists</h1></body></html>
