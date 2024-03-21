@@ -63,19 +63,19 @@ Transpile the markdown to html to the output path `./README.html`.
 
 - [ ] [Support style](https://www.markdownguide.org/cheat-sheet/)
   - [ ] Basic syntax
-    - [x] Headings
-    - [x] Bold
-    - [x] Italic
-    - [ ] Blockquote
-    - [ ] Ordered list
-    - [ ] Unordered list
-    - [ ] Code
-    - [x] Horizontal rule
-    - [ ] Link
+    - [X] Headings
+    - [X] Bold
+    - [X] Italic
+    - [X] Blockquote
+    - [X] Ordered list
+    - [X] Unordered list
+    - [X] Code
+    - [X] Horizontal rule
+    - [X] Link
     - [ ] Image
   - Extended syntax
-    - [ ] Table
-    - [x] Fenced code block
+    - [X] Table
+    - [X] Fenced code block
     - [ ] Footnote
     - [ ] Heading ID
     - [ ] Definition List
