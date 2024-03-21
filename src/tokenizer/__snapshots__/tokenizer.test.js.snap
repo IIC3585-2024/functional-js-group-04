@@ -128,6 +128,179 @@ exports[`indented code block should return the indented_code_block token 1`] = `
 ]
 `;
 
+exports[`inline text bold 1`] = `
+[
+  {
+    "children": [
+      {
+        "children": [
+          {
+            "raw": "foo",
+            "text": "foo",
+            "type": "text_inline",
+          },
+        ],
+        "raw": "**foo**",
+        "text": "foo",
+        "type": "bold",
+      },
+    ],
+    "raw": "**foo**",
+    "text": "**foo**",
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`inline text bold and italic 1`] = `
+[
+  {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "raw": "foo bar",
+                "text": "foo bar",
+                "type": "text_inline",
+              },
+            ],
+            "raw": "*foo bar*",
+            "text": "foo bar",
+            "type": "italic",
+          },
+        ],
+        "raw": "***foo bar***",
+        "text": "*foo bar*",
+        "type": "bold",
+      },
+    ],
+    "raw": "***foo bar***",
+    "text": "***foo bar***",
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`inline text bold and italic and text_inline 1`] = `
+[
+  {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "raw": "bold and italic",
+                "text": "bold and italic",
+                "type": "text_inline",
+              },
+            ],
+            "raw": "*bold and italic*",
+            "text": "bold and italic",
+            "type": "italic",
+          },
+        ],
+        "raw": "***bold and italic***",
+        "text": "*bold and italic*",
+        "type": "bold",
+      },
+      {
+        "raw": "text",
+        "text": "text",
+        "type": "text_inline",
+      },
+    ],
+    "raw": "***bold and italic***text",
+    "text": "***bold and italic***text",
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`inline text char_inline 1`] = `
+[
+  {
+    "children": [
+      {
+        "raw": "*",
+        "text": "*",
+        "type": "text_inline",
+      },
+    ],
+    "raw": "*",
+    "text": "*",
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`inline text inline unmatched asterisks 1`] = `
+[
+  {
+    "children": [
+      {
+        "children": [
+          {
+            "raw": "*abc",
+            "text": "*abc",
+            "type": "text_inline",
+          },
+        ],
+        "raw": "***abc**",
+        "text": "*abc",
+        "type": "bold",
+      },
+    ],
+    "raw": "***abc**",
+    "text": "***abc**",
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`inline text italic 1`] = `
+[
+  {
+    "children": [
+      {
+        "children": [
+          {
+            "raw": "foo",
+            "text": "foo",
+            "type": "text_inline",
+          },
+        ],
+        "raw": "*foo*",
+        "text": "foo",
+        "type": "italic",
+      },
+    ],
+    "raw": "*foo*",
+    "text": "*foo*",
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`inline text text_inline 1`] = `
+[
+  {
+    "children": [
+      {
+        "raw": "foo",
+        "text": "foo",
+        "type": "text_inline",
+      },
+    ],
+    "raw": "foo",
+    "text": "foo",
+    "type": "paragraph",
+  },
+]
+`;
+
 exports[`link should return the link token 1`] = `
 [
   {

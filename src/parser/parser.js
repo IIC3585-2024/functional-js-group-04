@@ -1,108 +1,36 @@
-const parse = (tokens) => {
-    let out = '';
-    out += prefix();
+import _tag from "../helpers/index.js";
 
-    _recursive_parse(tokens);
+const typeHandler = {
+    thematic_break: () => _tag('hr')(''),
+    heading: (token) => _tag(`h${token.level}`)(_recursive_parse(token.children)),
+    indented_code_block: (token) => _tag('pre')(_tag('code')(token.text)),
+    fenced_code_block: (token) => _tag('pre')(_tag('code')(token.text)),
+    paragraph: (token) => _tag('p') (_recursive_parse(token.children)),
+    blank_line: () => '',
+    text_inline: (token) => token.text,
+    bold: (token) => _tag('strong')(_recursive_parse(token.children)),
+    italic: (token) => _tag('em')(_recursive_parse(token.children)),
+    blockquote: (token) => _tag('blockquote')(_recursive_parse(token.children)),
+    link: (token) => _tag('a')(token.text, { href: token.href, title: token.title }),
+}
 
-    out += suffix();
+const prefix = (sty) => {
+    return `<!DOCTYPE html><style>${sty}</style><html><head><title>Markdown</title></head><body>`;
+}
 
-    function style() {
-        return `
-        <style>
-            blockquote {
-                margin: 1.5em 40px;
-                padding: 0 1em;
-                border-left: 5px solid #ddd;
-                background-color: #f9f9f9;
-                padding: 0.5em 10px;
-              }
-        </style>
-        `
-    }
+const _recursive_parse = (tokens) => {
+    return tokens.map((token) => typeHandler[token.type](token)).join('');
+}
 
-    function prefix() {
-        return `<!DOCTYPE html>${style()}<html><head><title>Markdown</title></head><body>`;
-    }
+const suffix = () => {
+    return `</body></html>`;
+}
 
-    function suffix() {
-        return '</body></html>';
-    }
+const parse = (tokens, style) => {
+    const sections = [prefix, _recursive_parse, suffix]
+    const params = [style, tokens, false]
 
-    function tag(type, closing = false) {
-        return `<${closing ? '/' : ''}${type}>`
-    }
-
-    function _recursive_parse(tokens) {
-        tokens.map((token) => {
-
-            if (token.type === "thematic_break") {
-                out += '<hr/>';
-            }
-
-            if (token.type === "heading") {
-                out += tag(`h${token.level}`);
-                _recursive_parse(token.children);
-                out += tag(`h${token.level}`, true);
-            }
-
-            if (token.type === "indented_code_block") {
-                out += tag("pre");
-                out += tag("code");
-                out += token.text;
-                out += tag("code", true);
-                out += tag("pre", true);
-            }
-
-            if (token.type === "fenced_code_block") {
-                out += tag("pre");
-                out += tag("code");
-                out += token.text;
-                out += tag("code", true);
-                out += tag("pre", true);
-            }
-
-            if (token.type === "paragraph") {
-                out += '<p>';
-                _recursive_parse(token.children);
-                out += '</p>';
-            }
-
-            if (token.type === "blank_line") {
-                // do nothing, blank lines are ignored
-            }
-
-            if (token.type === "text_inline") {
-                out += token.text;
-            }
-    
-            if (token.type === "bold") {
-                out += tag("strong");
-                _recursive_parse(token.children);
-                out += tag("strong", true);
-            }
-
-            if (token.type === "italic") {
-                out += tag("em");
-                _recursive_parse(token.children);
-                out += tag("em", true);
-            }
-
-            if (token.type === "link") {
-                out += `<a href="${token.href}" title="${token.title}">`;
-                _recursive_parse(token.children);
-                out += '</a>';
-            }
-
-            if (token.type === "blockquote") {
-                out += tag("blockquote");
-                _recursive_parse(token.children);
-                out += tag("blockquote", true);
-            }
-    
-        });
-    }
-
-    return out;
+    return sections.reduce((out, func, index) => out + func(params[index]), '');
 }
 
 export default parse;
