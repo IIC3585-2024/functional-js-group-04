@@ -70,6 +70,11 @@ const tokenizeInline = (src) => {
             token.children = tokenizeInline(token.text);
         }
 
+        else if (token = lexer.link(src)) {
+            src = src.substring(token.raw.length);
+            token.children = tokenizeInline(token.text);
+        }
+
         else if (token = lexer.italic(src)) {
             src = src.substring(token.raw.length);
             token.children = tokenizeInline(token.text);
@@ -93,13 +98,6 @@ const tokenizeInline = (src) => {
                 previousToken.raw += token.raw;
                 continue
             }
-        }
-
-        if (token = lexer.link(src)) {
-            src = src.substring(token.raw.length);
-            token.children = tokenizeInline(token.text);
-            tokens.push(token);
-            continue
         }
 
         // Throws error if the src is not empty and no token is matched

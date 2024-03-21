@@ -1,6 +1,9 @@
 function tag(type) {
-    return function (content) {
-        return `<${type}>${content}</${type}>`
+    return function (content, attrs = {}) {
+        const attributes = Object.entries(attrs)
+            .map(([key, value]) => `${key}="${value}"`)
+            .join(' ');
+        return `<${type} ${attributes}>${content}</${type}>`;
     }
 }
 
