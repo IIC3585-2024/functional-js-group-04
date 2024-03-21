@@ -82,7 +82,7 @@ Transpile the markdown to html to the output path `./README.html`.
     - [ ] Strikethrough
     - [ ] Task list
     - [ ] Emoji
-    - [ ] Highlight
+    - [X] Highlight
     - [ ] Subscript
     - [ ] Superscript
 

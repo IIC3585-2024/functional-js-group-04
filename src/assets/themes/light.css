@@ -6,6 +6,7 @@
     --light-light-primary-color: #34343410; /* Light light dark */
     --secondary-color: #f3f3f3; /* Light */
     --reference-color: #5a9de5; /* Sky blue */
+    --highlight-color: #f1e8b2; /* Highlight */
   }
 
 
@@ -114,4 +115,9 @@ td:first-child, th:first-child {
 
 tr:last-child {
     border-bottom: 0px solid var(--light-light-primary-color);
+}
+
+mark {
+    background-color: var(--highlight-color);
+    padding: 0.2rem 0.5rem;
 }
