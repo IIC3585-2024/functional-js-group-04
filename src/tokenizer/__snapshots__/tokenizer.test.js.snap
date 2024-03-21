@@ -301,6 +301,39 @@ exports[`inline text text_inline 1`] = `
 ]
 `;
 
+exports[`link should return the link token 1`] = `
+[
+  {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "raw": "foo",
+                "text": "foo",
+                "type": "text_inline",
+              },
+            ],
+            "raw": "**foo**",
+            "text": "foo",
+            "type": "bold",
+          },
+        ],
+        "href": "bar",
+        "raw": "[**foo**](bar "**title**")",
+        "text": "**foo**",
+        "title": "**title**",
+        "type": "link",
+      },
+    ],
+    "raw": "[**foo**](bar "**title**")",
+    "text": "[**foo**](bar "**title**")",
+    "type": "paragraph",
+  },
+]
+`;
+
 exports[`paragraph should return one token on multiple lines 1`] = `
 [
   {

@@ -132,6 +132,37 @@ const italic = (src) => {
     return null;
 }
 
+const link = (src) => {
+    const match = src.match(regex.link);
+    if (match) {
+        const type = 'link';
+        const raw = match[0];
+        const text = match[1];
+        const openAngleBracket = match[3];
+        const href = match[4];
+        const closeAngleBracket = match[5];
+        const spaceTitleHref = match[6];
+        const title = match[9] || match[10] || match[11] || null;
+
+        if (Boolean(openAngleBracket) !== Boolean(closeAngleBracket)) return null;
+
+        if (href && title && !spaceTitleHref) return null;
+
+        if (href.startsWith('<')) return null;
+
+        if (/[\x00-\x1F\x7F\s]/.test(href)) return null;
+
+        const hrefWithoutEscapeParenthesis = href.replace(/\\[()]/g, '');
+
+        const level = [...hrefWithoutEscapeParenthesis].reduce((acc, char) =>
+            (acc < 0) ? acc : (char === '(' ? acc + 1 : (char === ')' ? acc - 1 : acc)), 0);
+        if (level !== 0) return null;
+
+        return { raw, type, text, href, title };
+    }
+    return null;
+}
+
 const blockquote = (src) => {
     const match = src.match(regex.blockquote);
     if (match) {
@@ -208,4 +239,5 @@ export default {
     bold,
     italic,
     blockquote,
+    link,
 };

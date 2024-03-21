@@ -11,6 +11,7 @@ const typeHandler = {
     bold: (token) => _tag('strong')(_recursive_parse(token.children)),
     italic: (token) => _tag('em')(_recursive_parse(token.children)),
     blockquote: (token) => _tag('blockquote')(_recursive_parse(token.children)),
+    link: (token) => _tag('a')(token.text, { href: token.href, title: token.title }),
 }
 
 const prefix = (sty) => {
