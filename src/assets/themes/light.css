@@ -118,6 +118,7 @@ tr:last-child {
 }
 
 mark {
+    color: var(--primary-color);
     background-color: var(--highlight-color);
     padding: 0.2rem 0.5rem;
 }
