@@ -1,9 +1,11 @@
-function tag(type) {
+function tag(type, closing = true) {
     return function (content, attrs = {}) {
         const attributes = Object.entries(attrs)
             .map(([key, value]) => `${key}="${value}"`)
             .join(' ');
-        return `<${type}${attributes}>${content}</${type}>`;
+
+        const closingTag = closing ? `</${type}>` : '';
+        return `<${type}${attributes ? " " : ""}${attributes}>${content}${closingTag}`;
     }
 }
 

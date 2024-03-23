@@ -66,6 +66,9 @@ mollit anim id est laborum.
 ### Links
 [Repositorio grupo 04](https://github.com/IIC3585-2024/functional-js-group-04 "Repositorio")
 
+### Images
+This is an image! ![walking duck gif](https://media1.tenor.com/m/7zKZuIk31GEAAAAC/bird-dance.gif "Duck")
+
 ###### 1
 
 

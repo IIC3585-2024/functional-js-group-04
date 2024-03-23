@@ -10,12 +10,14 @@ exports[`parser spec with fenced code block 1`] = `
 
 exports[`parser spec with heading tokens 1`] = `"<!DOCTYPE html><style>undefined</style><html><head><title>Markdown</title></head><body><h1>foo <strong>bar</strong> baz</h1></body></html>"`;
 
+exports[`parser spec with image 1`] = `"<!DOCTYPE html><style>undefined</style><html><head><title>Markdown</title></head><body><p><img src="/url" alt="foo" title="title"></p></body></html>"`;
+
 exports[`parser spec with indented code block 1`] = `
 "<!DOCTYPE html><style>undefined</style><html><head><title>Markdown</title></head><body><pre><code>a simple
   indented code block</code></pre></body></html>"
 `;
 
-exports[`parser spec with link 1`] = `"<!DOCTYPE html><style>undefined</style><html><head><title>Markdown</title></head><body><p><ahref="bar" title="null"><strong>foo</strong></a></p></body></html>"`;
+exports[`parser spec with link 1`] = `"<!DOCTYPE html><style>undefined</style><html><head><title>Markdown</title></head><body><p><a href="bar" title="null"><strong>foo</strong></a></p></body></html>"`;
 
 exports[`parser spec with paragraphs 1`] = `
 "<!DOCTYPE html><style>undefined</style><html><head><title>Markdown</title></head><body><p>foo

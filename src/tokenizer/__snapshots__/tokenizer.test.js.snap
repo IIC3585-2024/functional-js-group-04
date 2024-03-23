@@ -253,6 +253,31 @@ exports[`inline text code span 1`] = `
 ]
 `;
 
+exports[`inline text image 1`] = `
+[
+  {
+    "children": [
+      {
+        "raw": "Foo ",
+        "text": "Foo ",
+        "type": "text_inline",
+      },
+      {
+        "alt": "foo",
+        "children": [],
+        "raw": "![foo](/url "title")",
+        "src": "/url",
+        "title": "title",
+        "type": "image",
+      },
+    ],
+    "raw": "Foo ![foo](/url "title")",
+    "text": "Foo ![foo](/url "title")",
+    "type": "paragraph",
+  },
+]
+`;
+
 exports[`inline text inline unmatched asterisks 1`] = `
 [
   {
@@ -302,6 +327,32 @@ exports[`inline text italic 1`] = `
 `;
 
 exports[`inline text link 1`] = `
+[
+  {
+    "children": [
+      {
+        "children": [
+          {
+            "raw": "foo",
+            "text": "foo",
+            "type": "text_inline",
+          },
+        ],
+        "href": "bar",
+        "raw": "[foo](bar "baz")",
+        "text": "foo",
+        "title": "baz",
+        "type": "link",
+      },
+    ],
+    "raw": "[foo](bar "baz")",
+    "text": "[foo](bar "baz")",
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`inline text link 2`] = `
 [
   {
     "children": [

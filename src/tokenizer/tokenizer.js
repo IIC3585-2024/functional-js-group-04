@@ -23,7 +23,7 @@ const tokenizeBlocks = (src) => {
         else if (token = lexer.fencedCodeBlock(src)) {
             src = src.substring(token.raw.length);
         }
-            
+
         else if (token = lexer.blankLine(src)) {
             src = src.substring(token.raw.length);
         }
@@ -65,7 +65,12 @@ const tokenizeInline = (src) => {
     while (src) {
         let token = null;
 
-        if (token = lexer.bold(src)) {
+        if (token = lexer.image(src)) {
+            src = src.substring(token.raw.length);
+            token.children = tokenizeInline(token.text);
+        }
+
+        else if (token = lexer.bold(src)) {
             src = src.substring(token.raw.length);
             token.children = tokenizeInline(token.text);
         }
