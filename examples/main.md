@@ -88,7 +88,7 @@ Some *italic* text
 
 ### Combination of inlines
 
-Some ***bold and italic*** text
+Some ***bold and italic*** **bold** *italic* text
 
 # Bands
 

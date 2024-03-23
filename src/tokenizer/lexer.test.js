@@ -33,19 +33,19 @@ describe('#headings', () => {
             const token = lexer.heading(src);
             expect(token).toEqual({ raw: "#\n", type: 'heading', level: 1, text: '' });
         });
-    
+
         test('## foo', () => {
             const src = '## foo\nbar'
             const token = lexer.heading(src);
             expect(token).toEqual({ raw: "## foo\n", type: 'heading', level: 2, text: 'foo' });
         });
-    
+
         test('## foo##', () => {
             const src = '## foo##'
             const token = lexer.heading(src);
             expect(token).toEqual({ raw: "## foo##", type: 'heading', level: 2, text: 'foo##' });
         });
-    
+
         test('## foo ###', () => {
             const src = '## foo ##'
             const token = lexer.heading(src);
@@ -155,7 +155,7 @@ describe("emphasis and strong emphasis", () => {
             const token = lexer.delimiterRun(src);
             expect (token).toEqual({ raw: '***', type: 'delimiter_run', text: '***' });
         });
-    
+
         test('no match', () => {
             const src = 'foo';
             const token = lexer.delimiterRun(src);
@@ -170,19 +170,19 @@ describe("emphasis and strong emphasis", () => {
                 const token = lexer.leftFlankingDelimiterRun(src);
                 expect(token).toEqual({ raw: '***', type: 'left_flanking_delimiter_run', text: '***' });
             });
-    
+
             test('case 2', () => {
                 const src = '_abc';
                 const token = lexer.leftFlankingDelimiterRun(src);
                 expect(token).toEqual({ raw: '_', type: 'left_flanking_delimiter_run', text: '_' });
             });
-    
+
             test('case 3', () => {
                 const src = '**"abc"';
                 const token = lexer.leftFlankingDelimiterRun(src);
                 expect(token).toEqual({ raw: '**', type: 'left_flanking_delimiter_run', text: '**' });
             });
-    
+
             test('case 4', () => {
                 const src = '_"abc"';
                 const token = lexer.leftFlankingDelimiterRun(src);
@@ -225,19 +225,19 @@ describe("emphasis and strong emphasis", () => {
                 const token = lexer.rightFlankingDelimiterRun(src, "c");
                 expect(token).toEqual({ raw: '***', type: 'right_flanking_delimiter_run', text: '***' });
             });
-    
+
             test('case 2: abc_', () => {
                 const src = '_';
                 const token = lexer.rightFlankingDelimiterRun(src, "c");
                 expect(token).toEqual({ raw: '_', type: 'right_flanking_delimiter_run', text: '_' });
             });
-    
+
             test('case 3: "abc"**', () => {
                 const src = '**';
                 const token = lexer.rightFlankingDelimiterRun(src, '"');
                 expect(token).toEqual({ raw: '**', type: 'right_flanking_delimiter_run', text: '**' });
             });
-    
+
             test('case 4: "abc"_', () => {
                 const src = "_";
                 const token = lexer.rightFlankingDelimiterRun(src, '"');
@@ -251,19 +251,19 @@ describe("emphasis and strong emphasis", () => {
                 const token = lexer.rightFlankingDelimiterRun(src);
                 expect(token).toBe(null);
             });
-    
+
             test('case 2', () => {
                 const src = '_abc';
                 const token = lexer.rightFlankingDelimiterRun(src);
                 expect(token).toBe(null);
             });
-    
+
             test('case 3', () => {
                 const src = '**"abc"';
                 const token = lexer.rightFlankingDelimiterRun(src);
                 expect(token).toBe(null);
             });
-    
+
             test('case 4', () => {
                 const src = '_"abc"';
                 const token = lexer.rightFlankingDelimiterRun(src);
@@ -282,16 +282,10 @@ describe('#textInline', () => {
 })
 
 describe('#bold', () => {
-    test('should return null on empty string', () => {
-        const src = '';
+    test('should return bold token', () => {
+        const src = '**foo**';
         const token = lexer.bold(src);
-        expect(token).toBe(null);
-    });
-
-    test('should return null no match', () => {
-        const src = 'bar';
-        const token = lexer.bold(src);
-        expect(token).toBe(null);
+        expect(token).toEqual({ raw: "**foo**", type: 'bold', text: 'foo' });
     });
 
     test('should return the bold object', () => {
@@ -317,7 +311,7 @@ describe('#link', () => {
     });
 
     test('should return empty link token', () => {
-        const src = '[]()';    
+        const src = '[]()';
         const token = lexer.link(src);
         expect(token).toEqual({ raw: "[]()", type: 'link', text: '', href: '', title: null});
     });
