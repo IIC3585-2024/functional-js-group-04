@@ -130,7 +130,7 @@ const bold = (src) => {
     const match = src.match(regex.bold);
     if (match) {
         const type = 'bold';
-        const raw = match[0];
+        const raw = match[0].slice(0, match[0].length - match[2].length);
         const text = match[1];
         return { raw, type, text };
     }
@@ -141,7 +141,7 @@ const italic = (src) => {
     const match = src.match(regex.italic);
     if (match) {
         const type = 'italic';
-        const raw = match[0];
+        const raw = match[0].slice(0, match[0].length - match[2].length);
         const text = match[1];
         return { raw, type, text };
     }
@@ -209,7 +209,7 @@ const leftFlankingDelimiterRun = (src, prevChar = "\n") => {
     token['type'] = 'left_flanking_delimiter_run';
 
     const nextChar = src[src.indexOf(token.text) + token.raw.length] || "\n";
-    
+
     const condition1 = !regex.unicodeWhitespaceChar.test(nextChar);
     const condition2a = !regex.unicodePunctuationChar.test(prevChar);
     const condition2b = regex.unicodePunctuationChar.test(prevChar) && (regex.unicodePunctuationChar.test(nextChar) || regex.unicodeWhitespaceChar.test(nextChar));
@@ -226,7 +226,7 @@ const rightFlankingDelimiterRun = (src, prevChar = "\n") => {
     token['type'] = 'right_flanking_delimiter_run';
 
     const nextChar = src[src.indexOf(token.text) + token.raw.length] || "\n";
-    
+
     const condition1 = !regex.unicodeWhitespaceChar.test(prevChar);
     const condition2a = !regex.unicodePunctuationChar.test(prevChar);
 

@@ -10,23 +10,6 @@ exports[`blank line should return the blank_line token 1`] = `
 ]
 `;
 
-exports[`code span should return the code_span token 1`] = `
-[
-  {
-    "children": [
-      {
-        "raw": "\`\` foo \`bar\` baz \`\`",
-        "text": "foo \`bar\` baz",
-        "type": "code_span",
-      },
-    ],
-    "raw": "\`\` foo \`bar\` baz \`\`",
-    "text": "\`\` foo \`bar\` baz \`\`",
-    "type": "paragraph",
-  },
-]
-`;
-
 exports[`fenced code block should return the fenced_code_block token 1`] = `
 [
   {
@@ -253,6 +236,23 @@ exports[`inline text char_inline 1`] = `
 ]
 `;
 
+exports[`inline text code span 1`] = `
+[
+  {
+    "children": [
+      {
+        "raw": "\`\` foo \`bar\` baz \`\`",
+        "text": "foo \`bar\` baz",
+        "type": "code_span",
+      },
+    ],
+    "raw": "\`\` foo \`bar\` baz \`\`",
+    "text": "\`\` foo \`bar\` baz \`\`",
+    "type": "paragraph",
+  },
+]
+`;
+
 exports[`inline text inline unmatched asterisks 1`] = `
 [
   {
@@ -301,24 +301,7 @@ exports[`inline text italic 1`] = `
 ]
 `;
 
-exports[`inline text text_inline 1`] = `
-[
-  {
-    "children": [
-      {
-        "raw": "foo",
-        "text": "foo",
-        "type": "text_inline",
-      },
-    ],
-    "raw": "foo",
-    "text": "foo",
-    "type": "paragraph",
-  },
-]
-`;
-
-exports[`link should return the link token 1`] = `
+exports[`inline text link 1`] = `
 [
   {
     "children": [
@@ -338,14 +321,31 @@ exports[`link should return the link token 1`] = `
           },
         ],
         "href": "bar",
-        "raw": "[**foo**](bar "**title**")",
+        "raw": "[**foo**](bar)",
         "text": "**foo**",
-        "title": "**title**",
+        "title": null,
         "type": "link",
       },
     ],
-    "raw": "[**foo**](bar "**title**")",
-    "text": "[**foo**](bar "**title**")",
+    "raw": "[**foo**](bar)",
+    "text": "[**foo**](bar)",
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`inline text text_inline 1`] = `
+[
+  {
+    "children": [
+      {
+        "raw": "foo",
+        "text": "foo",
+        "type": "text_inline",
+      },
+    ],
+    "raw": "foo",
+    "text": "foo",
     "type": "paragraph",
   },
 ]

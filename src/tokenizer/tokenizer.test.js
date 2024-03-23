@@ -108,4 +108,10 @@ describe("inline text", () => {
         const tokens = tokenize(src);
         expect(tokens).toMatchSnapshot();
     });
+
+    test("link", () => {
+        const src = '[**foo**](bar)';
+        const tokens = tokenize(src);
+        expect(tokens).toMatchSnapshot();
+    });
 })
