@@ -79,6 +79,17 @@ describe("inline text", () => {
         expect(tokens).toMatchSnapshot();
     });
 
+    test("link", () => {
+        const src = '[foo](bar "baz")';
+        const tokens = tokenize(src);
+        expect(tokens).toMatchSnapshot();
+    });
+    test("image", () => {
+        const src = 'Foo ![foo](/url "title")';
+        const tokens = tokenize(src);
+        expect(tokens).toMatchSnapshot();
+    });
+
     test("text_inline", () => {
         const src = 'foo';
         const tokens = tokenize(src);

@@ -88,7 +88,7 @@ const blankLine = (src) => {
 }
 
 const textInline = (src) => {
-    const reserved = ['[', '![', '*', '_', '`'];
+    const reserved = ['[', '!', '*', '_', '`'];
 
     if (reserved.includes(src[0])) return null;
 
@@ -179,6 +179,30 @@ const link = (src) => {
     return null;
 }
 
+const image = (src) => {
+    const match = src.match(regex.image);
+    if (match) {
+        const type = 'image';
+        const raw = match[0];
+        const alt = match[1];
+        const imageUrl = match[4];
+        const title = match[9] || match[10] || match[11] || null;
+
+        if (imageUrl.startsWith('<')) return null;
+
+        if (/[\x00-\x1F\x7F\s]/.test(imageUrl)) return null;
+
+        const imageUrlWithoutEscapeParenthesis = imageUrl.replace(/\\[()]/g, '');
+
+        const level = [...imageUrlWithoutEscapeParenthesis].reduce((acc, char) =>
+            (acc < 0) ? acc : (char === '(' ? acc + 1 : (char === ')' ? acc - 1 : acc)), 0);
+        if (level !== 0) return null;
+
+        return { raw, type, alt, title, src: imageUrl};
+    }
+    return null;
+}
+
 const blockquote = (src) => {
     const match = src.match(regex.blockquote);
     if (match) {
@@ -257,4 +281,5 @@ export default {
     italic,
     blockquote,
     link,
+    image,
 };

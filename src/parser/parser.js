@@ -12,6 +12,7 @@ const typeHandler = {
     italic: (token) => _tag('em')(_recursive_parse(token.children)),
     blockquote: (token) => _tag('blockquote')(_recursive_parse(token.children)),
     link: (token) => _tag('a')(_recursive_parse(token.children), { href: token.href, title: token.title }),
+    image: (token) => _tag('img', false)('', { src: token.src, alt: token.alt, title: token.title }),
     code_span: (token) => _tag('code')(token.text),
 }
 

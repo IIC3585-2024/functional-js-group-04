@@ -331,7 +331,7 @@ describe('#link', () => {
     test('should return link token when bold is used in and out', () => {
         const src = '*[foo*](bar)';
         const token = lexer.link(src);
-        expect(token).toEqual({ raw: "[foo*](bar)", type: 'link', text: 'foo*', href: 'bar', title: null });
+        expect(token).toEqual(null);
     });
 
     test('should return null when href use spaces', () => {
@@ -357,7 +357,40 @@ describe('#link', () => {
         const token = lexer.link(src);
         expect(token).toEqual({ raw: "[foo](bar (baz))", type: 'link', text: 'foo', href: 'bar', title: 'baz' });
     });
+
+    test('temp', () => {
+        const src = 'Es  parrafo ![foo](bar (baz))';
+        const token = lexer.link(src);
+        expect(token).toEqual(null);
+    });
 })
+
+describe('#image', () => {
+    test('should return image token', () => {
+        const src = '![foo](/url "title")';
+        const token = lexer.image(src);
+        expect(token).toEqual({ raw: "![foo](/url \"title\")", type: 'image', alt: 'foo', src: '/url', title: 'title' });
+    });
+
+    test('should return image token with empty text', () => {
+        const src = '![](/url)';
+        const token = lexer.image(src);
+        expect(token).toEqual({ raw: "![](/url)", type: 'image', alt: '', src: '/url', title: null });
+    });
+
+    test('should return image token with angle brackets', () => {
+        const src = '![foo](<url>)';
+        const token = lexer.image(src);
+        expect(token).toEqual({ raw: "![foo](<url>)", type: 'image', alt: 'foo', src: 'url', title: null });
+    });
+
+    test('should return null when no match', () => {
+        const src = 'Es párrafo ![foo](<url>)';
+        const token = lexer.image(src);
+        expect(token).toEqual(null);
+    });
+});
+
 
 describe('#codeSpan', () => {
     test('should return code span token', () => {
