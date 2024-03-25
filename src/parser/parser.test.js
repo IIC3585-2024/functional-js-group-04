@@ -55,5 +55,11 @@ describe("parser", () => {
 
       expect(parse(tokens)).toMatchSnapshot();
     });
+
+    test("list", () => {
+      const tokens = tokenize("- foo\n- bar\n- baz");
+
+      expect(parse(tokens)).toMatchSnapshot();
+    });
   });
 });

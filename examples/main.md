@@ -69,10 +69,14 @@ mollit anim id est laborum.
 ### Images
 This is an image! ![walking duck gif](https://media1.tenor.com/m/7zKZuIk31GEAAAAC/bird-dance.gif "Duck")
 
+###List
++ regex 
++ lexer
++ tokenizer
++ parser
+
+
 ###### 1
-
-
-
 
 ###### 6
 

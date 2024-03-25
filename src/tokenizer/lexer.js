@@ -203,6 +203,16 @@ const image = (src) => {
     return null;
 }
 
+const listItem = (src) => {
+    const match = src.match(regex.listItem);
+    if (match) {
+        const type = 'list_item';
+        const raw = match[0];
+        const text = match[3];
+        return { raw, type, text };
+    }
+    return null;
+}
 const blockquote = (src) => {
     const match = src.match(regex.blockquote);
     if (match) {
@@ -282,4 +292,5 @@ export default {
     blockquote,
     link,
     image,
+    listItem,
 };

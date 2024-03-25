@@ -28,6 +28,11 @@ const tokenizeBlocks = (src) => {
             src = src.substring(token.raw.length);
         }
 
+        else if (token = lexer.listItem(src)) {
+            src = src.substring(token.raw.length);
+            token.children = tokenizeInline(token.text);
+        }
+
         else if (token = lexer.paragraph(src)) {
             src = src.substring(token.raw.length);
 
@@ -53,6 +58,7 @@ const tokenizeBlocks = (src) => {
 
         tokens.push(token);
         previousToken = token;
+
     }
 
     return tokens;

@@ -19,6 +19,8 @@ exports[`parser spec with indented code block 1`] = `
 
 exports[`parser spec with link 1`] = `"<!DOCTYPE html><style>undefined</style><html><head><title>Markdown</title></head><body><p><a href="bar" title="null"><strong>foo</strong></a></p></body></html>"`;
 
+exports[`parser spec with list 1`] = `"<!DOCTYPE html><style>undefined</style><html><head><title>Markdown</title></head><body><ul><li>foo</li><li>bar</li><li>baz</li></ul></body></html>"`;
+
 exports[`parser spec with paragraphs 1`] = `
 "<!DOCTYPE html><style>undefined</style><html><head><title>Markdown</title></head><body><p>foo
 bar
