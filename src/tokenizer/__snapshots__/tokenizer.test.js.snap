@@ -385,6 +385,62 @@ exports[`inline text link 2`] = `
 ]
 `;
 
+exports[`inline text list item 1`] = `
+[
+  {
+    "children": [
+      {
+        "raw": "foo",
+        "text": "foo",
+        "type": "text_inline",
+      },
+    ],
+    "raw": "- foo",
+    "text": "foo",
+    "type": "list_item",
+  },
+  {
+    "raw": "
+",
+    "type": "blank_line",
+  },
+  {
+    "children": [
+      {
+        "raw": "bar",
+        "text": "bar",
+        "type": "text_inline",
+      },
+    ],
+    "raw": "- bar",
+    "text": "bar",
+    "type": "list_item",
+  },
+  {
+    "raw": "
+",
+    "type": "blank_line",
+  },
+  {
+    "children": [
+      {
+        "raw": "baz",
+        "text": "baz",
+        "type": "text_inline",
+      },
+    ],
+    "raw": "- baz",
+    "text": "baz",
+    "type": "list_item",
+  },
+  {
+    "raw": "
+",
+    "type": "blank_line",
+  },
+]
+`;
+
 exports[`inline text text_inline 1`] = `
 [
   {

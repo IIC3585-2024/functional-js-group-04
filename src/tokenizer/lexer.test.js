@@ -440,3 +440,36 @@ describe('#blockquote', () => {
         );
     });
 })
+
+describe('#listItem', () => {
+    test('should return list item token', () => {
+        const src = '- foo';
+        const token = lexer.listItem(src);
+        expect(token).toEqual({ raw: "- foo", type: 'list_item', text: 'foo' });
+    });
+
+    test('should return list item token with ordered list', () => {
+        const src = '+ foo';
+        const token = lexer.listItem(src);
+        expect(token).toEqual({ raw: "+ foo", type: 'list_item', text: 'foo' });
+    });
+
+    test('should return null when no match', () => {
+        const src = 'foo';
+        const token = lexer.listItem(src);
+        expect(token).toBe(null);
+    });
+
+    test('should return null when + simbol in a paragraph', () => {
+        const src = 'hola que tal + hola';
+        const token = lexer.listItem(src);
+        expect(token).toBe(null);
+    });
+
+    test('should return ', () => {
+        const src = '- foo\n\ntexto';
+        const token = lexer.listItem(src);
+        expect(token).toEqual({ raw: "- foo\n", type: 'list_item', text: 'foo' });
+    });
+
+});

@@ -125,4 +125,10 @@ describe("inline text", () => {
         const tokens = tokenize(src);
         expect(tokens).toMatchSnapshot();
     });
+
+    test("list item", () => {
+        const src = '- foo\n- bar\n- baz\n';
+        const tokens = tokenize(src);
+        expect(tokens).toMatchSnapshot();
+    });
 })

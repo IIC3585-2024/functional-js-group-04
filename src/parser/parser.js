@@ -14,6 +14,7 @@ const typeHandler = {
     link: (token) => _tag('a')(_recursive_parse(token.children), { href: token.href, title: token.title }),
     image: (token) => _tag('img', false)('', { src: token.src, alt: token.alt, title: token.title }),
     code_span: (token) => _tag('code')(token.text),
+    list_item: (token) => _tag('li')(_recursive_parse(token.children)),
 }
 
 const prefix = (sty) => {
