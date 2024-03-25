@@ -53,6 +53,7 @@ const tokenizeBlocks = (src) => {
         // Throws error if the src is not empty and no token is matched
         else if (src) {
             (src)
+            console.log(src)
             throw new Error('Infinite loop', src);
         }
 
